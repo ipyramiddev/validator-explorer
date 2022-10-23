@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { ExpandMore } from '@material-ui/icons';
 import { useRecoilValue } from 'recoil';
 import { readSelectedNetwork } from '@recoil/big_dipper_networks';
-import BigDipperLogoWhite from '@assets/big-dipper-white.svg';
-import BigDipperLogoRed from '@assets/big-dipper-red.svg';
+import CascadiaLogoDark from '@assets/cascadia-dark.svg';
+import CascadiaLogoLight from '@assets/cascadia-light.svg';
 import { HOME } from '@utils/go_to_page';
 import { readTheme } from '@recoil/settings';
 import { useStyles } from './styles';
@@ -26,9 +26,9 @@ const Navbar = (props:NavbarProps) => {
       <Link href={HOME}>
         <a className={classes.a}>
           {theme === 'light' ? (
-            <BigDipperLogoRed className={classes.logo} />
+            <CascadiaLogoLight className={classes.logo} />
           ) : (
-            <BigDipperLogoWhite className={classes.logo} />
+            <CascadiaLogoDark className={classes.logo} />
           )}
         </a>
       </Link>

@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Box } from '@material-ui/core';
-import BigDipperLogoWhite from '@assets/big-dipper-white.svg';
-import BigDipperLogoRed from '@assets/big-dipper-red.svg';
+import CascadiaLogoDark from '@assets/cascadia-dark.svg';
+import CascadiaLogoLight from '@assets/cascadia-light.svg';
 import { Networks } from '@src/components/nav/components';
 import { useRecoilValue } from 'recoil';
 import { readTheme } from '@recoil/settings/selectors';
@@ -28,9 +28,9 @@ const NetworkList: React.FC<{
         }}
       >
         {theme === 'light' ? (
-          <BigDipperLogoRed />
+          <CascadiaLogoLight />
         ) : (
-          <BigDipperLogoWhite />
+          <CascadiaLogoDark />
         )}
       </div>
       <Networks className={classes.content} />
