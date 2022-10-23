@@ -42,20 +42,20 @@ export const useStyles = () => {
         tokenomics: {
           height: '375px',
           [theme.breakpoints.up('md')]: {
-            gridColumn: '1 / 2',
+            gridColumn: '2 / 3',
           },
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '3 / 4',
+            gridColumn: '4 / 5',
             height: '100%',
           },
         },
         consensus: {
           height: '375px',
           [theme.breakpoints.up('md')]: {
-            gridColumn: '2 / 3',
+            gridColumn: '1 / 2',
           },
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '4 / 5',
+            gridColumn: '3 / 4',
             height: '100%',
           },
         },
