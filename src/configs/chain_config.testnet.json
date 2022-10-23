@@ -1,24 +1,24 @@
 {
-  "title": "Evmos Block Explorer",
-  "network": "evmos_9000-3",
+  "title": "Cascadia Block Explorer",
+  "network": "cascadia_9000-3",
   "icon": "/images/icon.svg",
   "logo": {
     "default": "/images/logo.svg"
   },
   "prefix": {
-    "consensus": "evmosvalcons",
-    "validator": "evmosvaloper",
-    "account": "evmos"
+    "consensus": "Con-",
+    "validator": "Val-",
+    "account": "cascadia"
   },
   "genesis": {
     "time": "2021-07-13T08:00:00",
     "height": 1
   },
-  "primaryTokenUnit": "atevmos",
-  "votingPowerTokenUnit": "atevmos",
+  "primaryTokenUnit": "cascadia",
+  "votingPowerTokenUnit": "cascadia",
   "tokenUnits": {
-    "atevmos": {
-      "display": "tevmos",
+    "cascadia": {
+      "display": "cascadia",
       "exponent": 18
     }
   },
