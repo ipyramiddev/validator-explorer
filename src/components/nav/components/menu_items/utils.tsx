@@ -9,7 +9,6 @@ import {
   BLOCKS,
   VALIDATORS,
   TRANSACTIONS,
-  PROPOSALS,
   PARAMS,
 } from '@utils/go_to_page';
 
@@ -39,11 +38,6 @@ export const getMenuItems = () => {
       key: 'transactions',
       url: TRANSACTIONS,
       icon: <TransactionIcon {...iconProps} />,
-    },
-    {
-      key: 'proposals',
-      url: PROPOSALS,
-      icon: <ProposalsIcon {...iconProps} />,
     },
     {
       key: 'params',
