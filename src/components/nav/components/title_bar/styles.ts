@@ -25,6 +25,7 @@ export const useStyles = () => {
         },
         logo: {
           height: '56px',
+          margin: 'auto',
           // width: '225px',
         },
         content: {
