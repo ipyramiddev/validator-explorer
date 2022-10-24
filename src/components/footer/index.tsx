@@ -112,12 +112,12 @@ const Footer: React.FC<{className?: string}> = ({ className }) => {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://raw.githubusercontent.com/forbole/big-dipper-2.0-cosmos/master/LICENSE"
+                  href="/#"
                 />
               ),
             ]}
             values={{
-              name: generalConfig.maintainer.name,
+              name: "generalConfig.maintainer.name",
             }}
           />
           {' '}
