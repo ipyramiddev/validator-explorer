@@ -8,7 +8,7 @@
   "prefix": {
     "consensus": "con-",
     "validator": "val-",
-    "account": "evmos"
+    "account": "cascadia"
   },
   "genesis": {
     "time": "2021-07-13T08:00:00",
