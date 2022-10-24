@@ -98,7 +98,7 @@ const Settings: React.FC<{
               </Select>
             </div>
 
-            <div className={classes.formItem}>
+            {/* <div className={classes.formItem}>
               <Typography className="form-item--label">
                 {t('language')}
               </Typography>
@@ -120,7 +120,7 @@ const Settings: React.FC<{
                     </MenuItem>
                   ))}
               </Select>
-            </div>
+            </div> */}
 
             <div className={classes.formItem}>
               <Typography className="form-item--label">

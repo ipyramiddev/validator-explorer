@@ -94,3 +94,7 @@ button {
 .scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+svg {
+  fill: #999999;
+}

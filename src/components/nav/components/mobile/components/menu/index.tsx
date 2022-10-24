@@ -105,7 +105,7 @@ const Menu = (props: MenuProps) => {
         {/* Footer Actions */}
         {/* ========================= */}
         <div className={classes.footerActions}>
-          <div
+          {/* <div
             className={classes.language}
             role="button"
             onClick={languageOptions.toggleDrawer}
@@ -113,7 +113,7 @@ const Menu = (props: MenuProps) => {
             <Language />
             <Typography variant="caption">{t(router.locale)}</Typography>
             <ExpandMoreOutlined fontSize="small" />
-          </div>
+          </div> */}
           <div
             className={classes.theme}
             role="button"
