@@ -169,7 +169,6 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             href="/blocks/300"
             onClick={[Function]}
             onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             300
           </a>
@@ -276,7 +275,6 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             href="/blocks/301"
             onClick={[Function]}
             onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             301
           </a>

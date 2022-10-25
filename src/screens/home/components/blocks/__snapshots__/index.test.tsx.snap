@@ -18,7 +18,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
       href="/blocks"
       onClick={[Function]}
       onMouseEnter={[Function]}
-      onTouchStart={[Function]}
     >
       seeMore
     </a>
@@ -31,7 +30,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
     href="/blocks"
     onClick={[Function]}
     onMouseEnter={[Function]}
-    onTouchStart={[Function]}
   >
     seeMore
   </a>
