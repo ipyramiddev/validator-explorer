@@ -17,8 +17,8 @@ const Home = () => {
     <Layout className={classes.root}>
       <DataBlocks className={classes.dataBlocks} />
       <Hero className={classes.hero} />
-      <Tokenomics className={classes.tokenomics} />
       <Consensus className={classes.consensus} />
+      <Tokenomics className={classes.tokenomics} />
       <Blocks className={classes.blocks} />
       <Transactions className={classes.transactions} />
     </Layout>

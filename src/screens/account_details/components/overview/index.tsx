@@ -40,7 +40,7 @@ const Overview: React.FC<{
   const { isDesktop } = useScreenSize();
   const { location } = useWindowOrigin();
   const classes = useStyles();
-  const { t } = useTranslation('accounts');
+  const { t } = useTranslation();
   const {
     open,
     handleClose,
@@ -71,7 +71,7 @@ const Overview: React.FC<{
           />
           <div className="dialog__share--wrapper">
             <Typography variant="body1">
-              {t('shareTo')}
+              {t('accounts:shareTo')}
             </Typography>
             <div className={classes.icons}>
               <FacebookShareButton
@@ -133,7 +133,7 @@ const Overview: React.FC<{
       <Box className={classnames(className, classes.root)}>
         <div className={classnames(classes.copyText, classes.item)}>
           <Typography variant="body1" className="label">
-            {t('address')}
+            {t('accounts:address')}
           </Typography>
           <div className="detail">
             <CopyIcon
@@ -160,7 +160,7 @@ const Overview: React.FC<{
 
         <div className={classnames(classes.copyText, classes.item)}>
           <Typography variant="body1" className="label">
-            {t('rewardAddress')}
+            {t('accounts:rewardAddress')}
           </Typography>
           <div className="detail">
             <CopyIcon

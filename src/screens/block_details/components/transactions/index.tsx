@@ -17,12 +17,12 @@ const Transactions: React.FC<ComponentDefault & {
   className, transactions,
 }) => {
   const txListFormat = useRecoilValue(readTx);
-  const { t } = useTranslation('transactions');
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <Box className={classnames(className, classes.root)}>
       <div className={classes.header}>
-        <Typography variant="h2">{t('transactions')}</Typography>
+        <Typography variant="h2">{t('transactions:transactions')}</Typography>
       </div>
       {txListFormat === 'compact' ? (
         <TransactionsList

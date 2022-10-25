@@ -19,7 +19,7 @@ const Desktop = dynamic(() => import('./components/desktop'));
 const Mobile = dynamic(() => import('./components/mobile'));
 
 const Blocks = () => {
-  const { t } = useTranslation('blocks');
+  const { t } = useTranslation();
   const { isDesktop } = useScreenSize();
   const classes = useStyles();
   const {
@@ -40,13 +40,13 @@ const Blocks = () => {
   return (
     <>
       <NextSeo
-        title={t('blocks')}
+        title={t('blocks:blocks')}
         openGraph={{
-          title: t('blocks'),
+          title: t('blocks:blocks'),
         }}
       />
       <Layout
-        navTitle={t('blocks')}
+        navTitle={t('blocks:blocks')}
         className={classes.root}
       >
         <LoadAndExist

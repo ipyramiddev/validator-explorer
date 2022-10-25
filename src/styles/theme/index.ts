@@ -18,6 +18,9 @@ export const common = {
       xl: 1920,
     },
   },
+  shape: {
+    borderRadius: '0px',
+  },
   mixins: {
     toolbar: {
       '@media (min-width: 1280px)': {

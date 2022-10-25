@@ -8,18 +8,18 @@ import { useStyles } from './styles';
 import { List } from './components';
 
 const Validators = () => {
-  const { t } = useTranslation('validators');
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <>
       <NextSeo
-        title={t('validators')}
+        title={t('validators:validators')}
         openGraph={{
-          title: t('validators'),
+          title: t('validators:validators'),
         }}
       />
       <Layout
-        navTitle={t('validators')}
+        navTitle={t('validators:validators')}
         className={classes.root}
       >
         <List />

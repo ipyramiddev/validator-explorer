@@ -21,17 +21,17 @@ const Overview: React.FC<{
 }> = ({
   className, data,
 }) => {
-  const { t } = useTranslation('transactions');
+  const { t } = useTranslation();
   const classes = useStyles();
   const dateFormat = useRecoilValue(readDate);
 
   const details = [
     {
-      label: t('hash'),
+      label: t('transactions:hash'),
       detail: data.hash,
     },
     {
-      label: t('height'),
+      label: t('transactions:height'),
       detail: (
         <Link href={BLOCK_DETAILS(data.height)} passHref>
           <Typography variant="body1" className="value" component="a">
@@ -41,26 +41,26 @@ const Overview: React.FC<{
       ),
     },
     {
-      label: t('time'),
+      label: t('transactions:time'),
       detail: formatDayJs(dayjs.utc(data.timestamp), dateFormat),
     },
     {
-      label: t('fee'),
+      label: t('transactions:fee'),
       detail: `${formatNumber(data.fee.value, data.fee.exponent)} ${data?.fee?.displayDenom?.toUpperCase()}`,
     },
     {
-      label: t('gas'),
+      label: t('transactions:gas'),
       detail: `${numeral(data.gasUsed).format('0,0.[00]')} / ${numeral(data.gasWanted).format('0,0.[00]')}`,
     },
     {
-      label: t('result'),
+      label: t('transactions:result'),
       detail: (
         <Result success={data.success} />
       ),
     },
     {
       className: 'memo',
-      label: t('memo'),
+      label: t('transactions:memo'),
       detail: data.memo,
     },
   ];
@@ -68,7 +68,7 @@ const Overview: React.FC<{
   if (!data.success) {
     details.push({
       className: 'memo',
-      label: t('error'),
+      label: t('transactions:error'),
       detail: data.error,
     });
   }
@@ -76,7 +76,7 @@ const Overview: React.FC<{
   return (
     <BoxDetails
       className={classnames(className, classes.root)}
-      title={t('overview')}
+      title={t('transactions:overview')}
       details={details}
     />
   );

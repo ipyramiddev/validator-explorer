@@ -7,8 +7,8 @@ import {
 } from '@material-ui/core';
 import { useRecoilValue } from 'recoil';
 import { readTheme } from '@recoil/settings/selectors';
-import BigDipperLogoWhite from '@assets/big-dipper-white.svg';
-import BigDipperLogoRed from '@assets/big-dipper-red.svg';
+import CascadiaLogoDark from '@assets/cascadia-dark.svg';
+import CascadiaLogoLight from '@assets/cascadia-light.svg';
 import { useStyles } from './styles';
 import { useDesktop } from './hooks';
 import {
@@ -67,13 +67,13 @@ const Desktop: React.FC<{
           }}
         >
           {theme === 'light' ? (
-            <BigDipperLogoRed
+            <CascadiaLogoLight
               className={classes.logo}
               onClick={toggleMenu}
               role="button"
             />
           ) : (
-            <BigDipperLogoWhite
+            <CascadiaLogoDark
               className={classes.logo}
               onClick={toggleMenu}
               role="button"

@@ -29,7 +29,7 @@ const Messages: React.FC<{
 }> = ({
   className, ...props
 }) => {
-  const { t } = useTranslation('transactions');
+  const { t } = useTranslation();
   const classes = useStyles();
 
   const {
@@ -47,7 +47,7 @@ const Messages: React.FC<{
       <div className={classes.header}>
         <div className={classes.mobileOptions}>
           <Typography variant="h2">
-            {t('messages')}
+            {t('transactions:messages')}
           </Typography>
           <FormControlLabel
             control={(
@@ -57,7 +57,7 @@ const Messages: React.FC<{
                 color="primary"
               />
             )}
-            label={t('raw')}
+            label={t('transactions:raw')}
           />
         </div>
         <div className={classes.desktopOptions}>
@@ -69,7 +69,7 @@ const Messages: React.FC<{
                 color="primary"
               />
             )}
-            label={t('raw')}
+            label={t('transactions:raw')}
           />
           <TransactionMessagesFilter
             className={classes.filter}

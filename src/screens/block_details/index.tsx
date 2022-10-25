@@ -14,7 +14,7 @@ import { useStyles } from './styles';
 import { useBlockDetails } from './hooks';
 
 const BlockDetails = () => {
-  const { t } = useTranslation('blocks');
+  const { t } = useTranslation();
   const classes = useStyles();
   const { state } = useBlockDetails();
   const {
@@ -26,12 +26,12 @@ const BlockDetails = () => {
   return (
     <>
       <NextSeo
-        title={t('blockDetails')}
+        title={t('blocks:blockDetails')}
         openGraph={{
-          title: t('blockDetails'),
+          title: t('blocks:blockDetails'),
         }}
       />
-      <Layout navTitle={t('blockDetails')}>
+      <Layout navTitle={t('blocks:blockDetails')}>
         <LoadAndExist
           loading={state.loading}
           exists={state.exists}

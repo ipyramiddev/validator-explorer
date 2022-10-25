@@ -18,7 +18,7 @@ const Profile: React.FC<{profile: OverviewType} & ComponentDefault> = ({
   className, profile,
 }) => {
   const classes = useStyles();
-  const { t } = useTranslation('validators');
+  const { t } = useTranslation();
   const validator = useProfileRecoil(profile.validator);
 
   const pattern = /^((http|https|ftp):\/\/)/;
@@ -84,7 +84,7 @@ const Profile: React.FC<{profile: OverviewType} & ComponentDefault> = ({
       <div>
         <div className={classes.item}>
           <Typography variant="h4" className="label">
-            {t('website')}
+            {t('validators:website')}
           </Typography>
           {formattedItem.website}
         </div>
