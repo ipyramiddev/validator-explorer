@@ -4,7 +4,7 @@ import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { VariableSizeGrid as Grid } from 'react-window';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import { useGrid } from '@hooks';
 import {
   SortArrows,
@@ -46,6 +46,10 @@ const Desktop: React.FC<{
     const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
     const percentDisplay = x.status === 3 ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
     const votingPower = numeral(x.votingPower).format('0,0');
+
+    const handleDelegate = (address: string) => {
+      alert(address);
+    }
     return ({
       idx: `#${i + 1}`,
       validator: (
@@ -71,6 +75,15 @@ const Desktop: React.FC<{
         <Typography variant="body1" className={classnames('status', status.theme)}>
           {t(status.status)}
         </Typography>
+      ),
+      action: (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleDelegate(x.validator.address)}
+        >
+          {t('delegate')}
+        </Button>
       ),
     });
   });

@@ -35,13 +35,13 @@ export const fetchColumns = (t): {
       key: 'commission',
       sortKey: 'commission',
       align: 'right',
-      width: 15,
+      width: 10,
       sort: true,
     },
     {
       key: 'condition',
       align: 'center',
-      width: 15,
+      width: 10,
       component: (
         <Typography variant="h4" className="label popover">
           {t('condition')}
@@ -53,6 +53,10 @@ export const fetchColumns = (t): {
     },
     {
       key: 'status',
+      width: 10,
+    },
+    {
+      key: 'action',
       width: 10,
     },
   ]);
