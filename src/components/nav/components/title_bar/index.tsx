@@ -23,7 +23,10 @@ const TitleBar:React.FC<{
 
   const market = formatMarket(marketState);
 
-  const logoUrl = R.pathOr(chainConfig.logo.default, ['logo', theme], chainConfig);
+  const logoUrl = R.pathOr(
+    theme === 'light' ? chainConfig.logo.default : chainConfig.logo.dark,
+    ['logo', theme], chainConfig
+  );
 
   return (
     <div className={classnames(className, classes.root)}>

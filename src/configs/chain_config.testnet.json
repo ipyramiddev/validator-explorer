@@ -3,7 +3,8 @@
   "network": "cascadia_9000-3",
   "icon": "/images/icon.svg",
   "logo": {
-    "default": "/images/logo.svg"
+    "default": "/images/logo.svg",
+    "dark": "/images/logo_dark.svg"
   },
   "prefix": {
     "consensus": "Con-",
