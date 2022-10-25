@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
 import SettingIcon from '@assets/icon-setting.svg';

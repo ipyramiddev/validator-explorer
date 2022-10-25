@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import {
   Typography,
 } from '@material-ui/core';
-import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 // import Language from '@assets/icon-language.svg';
 import ThemeIcon from '@assets/icon-theme.svg';
@@ -116,7 +115,7 @@ const Menu = (props: MenuProps) => {
             className={classes.theme}
             role="button"
             onClick={() => themeOptions.handleChangeTheme(
-              themeOptions.theme==='dark'?'light':'dark',
+              themeOptions.theme === 'dark' ? 'light' : 'dark',
             )}
           >
             <span role="button">
