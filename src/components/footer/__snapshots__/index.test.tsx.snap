@@ -23,69 +23,55 @@ exports[`component: layout/footer matches snapshot 1`] = `
       className="footer__links"
     >
       <div
-        className="company links__group"
+        className="cascadia links__group"
       >
         <h3>
-          common:company
+          common:cascadia
         </h3>
         <a
-          href="https://www.forbole.com"
+          href="/#"
           rel="noreferrer"
           target="_blank"
         >
-          common:forbole
+          common:website
         </a>
         <a
-          href="https://www.forbole.com/stake-now"
-          rel="noreferrer"
-          target="_blank"
-        >
-          common:stakeNow
-        </a>
-        <a
-          href="https://www.forbole.com/contact"
-          rel="noreferrer"
-          target="_blank"
-        >
-          common:contact
-        </a>
-        <a
-          href="https://www.forbole.com/blog"
-          rel="noreferrer"
-          target="_blank"
-        >
-          common:blog
-        </a>
-      </div>
-      <div
-        className="bigDipper links__group"
-      >
-        <h3>
-          common:bigDipper
-        </h3>
-        <a
-          href="https://bigdipper.live/#about"
+          href="/#"
           rel="noreferrer"
           target="_blank"
         >
           common:about
         </a>
         <a
-          href="https://bigdipper.live/faq"
+          href="/#"
           rel="noreferrer"
           target="_blank"
         >
-          common:faq
+          common:docs
         </a>
         <a
-          href="https://bigdipper.live/terms-and-conditions"
+          href="/#"
+          rel="noreferrer"
+          target="_blank"
+        >
+          common:stakeNow
+        </a>
+        <a
+          href="/#"
+          rel="noreferrer"
+          target="_blank"
+        >
+          common:blog
+        </a>
+        <a
+          href="/#"
           rel="noreferrer"
           target="_blank"
         >
           common:termsAndConditions
         </a>
         <a
-          href="https://bigdipper.live/privacy-policy"
+          href="/#"
           rel="noreferrer"
           target="_blank"
         >
@@ -206,7 +192,7 @@ exports[`component: layout/footer matches snapshot 1`] = `
             common:donateExcerpt
           </p>
           <a
-            href="https://bigdipper.live/donate"
+            href="/#"
             rel="noreferrer"
             target="_blank"
           >

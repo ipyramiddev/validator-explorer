@@ -1,31 +1,28 @@
 import React from 'react';
 import classnames from 'classnames';
-import Link from 'next/link';
 import {
-  Drawer,
-  MenuItem,
   Typography,
 } from '@material-ui/core';
-import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-import Language from '@assets/icon-language.svg';
+// import Language from '@assets/icon-language.svg';
 import ThemeIcon from '@assets/icon-theme.svg';
-import { THEME_LIST } from '@recoil/settings';
-import {
-  ExpandMoreOutlined,
-} from '@material-ui/icons';
+// import { THEME_LIST } from '@recoil/settings';
+// import {
+//   ExpandMoreOutlined,
+// } from '@material-ui/icons';
 import { useStyles } from './styles';
 import { MenuItems } from '../../..';
 import {
-  useLanguageDrawer, useThemeDrawer,
+  // useLanguageDrawer,
+  useThemeDrawer,
 } from './hooks';
 import { MenuProps } from './types';
 
 const Menu = (props: MenuProps) => {
-  const router = useRouter();
+  // const router = useRouter();
   const {
     t,
-    lang,
+    // lang,
   } = useTranslation('common');
 
   const {
@@ -34,7 +31,7 @@ const Menu = (props: MenuProps) => {
   } = props;
 
   const classes = useStyles();
-  const languageOptions = useLanguageDrawer(lang, toggleNavMenus);
+  // const languageOptions = useLanguageDrawer(lang, toggleNavMenus);
 
   const themeOptions = useThemeDrawer(toggleNavMenus);
   return (
@@ -42,7 +39,7 @@ const Menu = (props: MenuProps) => {
       {/* ================================== */}
       {/* Lang Drawer */}
       {/* ================================== */}
-      <Drawer
+      {/* <Drawer
         anchor="bottom"
         open={languageOptions.drawerOpen}
         onClose={languageOptions.toggleDrawer}
@@ -70,11 +67,11 @@ const Menu = (props: MenuProps) => {
               ))
             }
         </div>
-      </Drawer>
+      </Drawer> */}
       {/* ================================== */}
       {/* Theme Drawer */}
       {/* ================================== */}
-      <Drawer
+      {/* <Drawer
         anchor="bottom"
         open={themeOptions.drawerOpen}
         onClose={themeOptions.toggleDrawer}
@@ -93,7 +90,7 @@ const Menu = (props: MenuProps) => {
               ))
             }
         </div>
-      </Drawer>
+      </Drawer> */}
       {/* ================================== */}
       {/* Main Content */}
       {/* ================================== */}
@@ -105,7 +102,7 @@ const Menu = (props: MenuProps) => {
         {/* Footer Actions */}
         {/* ========================= */}
         <div className={classes.footerActions}>
-          <div
+          {/* <div
             className={classes.language}
             role="button"
             onClick={languageOptions.toggleDrawer}
@@ -113,16 +110,18 @@ const Menu = (props: MenuProps) => {
             <Language />
             <Typography variant="caption">{t(router.locale)}</Typography>
             <ExpandMoreOutlined fontSize="small" />
-          </div>
+          </div> */}
           <div
             className={classes.theme}
             role="button"
-            onClick={themeOptions.toggleDrawer}
+            onClick={() => themeOptions.handleChangeTheme(
+              themeOptions.theme === 'dark' ? 'light' : 'dark',
+            )}
           >
             <span role="button">
               <ThemeIcon />
             </span>
-            <Typography variant="caption">{t(themeOptions.theme)}</Typography>
+            <Typography variant="caption">{t('themeOptions.theme')}</Typography>
           </div>
         </div>
       </div>

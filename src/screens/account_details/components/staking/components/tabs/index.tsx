@@ -26,7 +26,7 @@ const TabsHeader: React.FC<{
   tabs,
 }) => {
   const classes = useStyles();
-  const { t } = useTranslation('accounts');
+  const { t } = useTranslation();
 
   return (
     <div className={classnames(className, classes.root)}>
@@ -39,7 +39,7 @@ const TabsHeader: React.FC<{
         {tabs.map((x) => (
           <Tab
             key={x.key}
-            label={t(x.key, {
+            label={t(`accounts:${x.key}`, {
               num: numeral(x.count ?? 0).format('0,0'),
             })}
             {...a11yProps(x.id)}

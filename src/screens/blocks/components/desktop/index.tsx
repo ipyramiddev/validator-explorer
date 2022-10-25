@@ -32,7 +32,7 @@ const Desktop: React.FC<{
   loadMoreItems,
   isItemLoaded,
 }) => {
-  const { t } = useTranslation('blocks');
+  const { t } = useTranslation();
   const classes = useStyles();
   const {
     gridRef,

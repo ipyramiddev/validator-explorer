@@ -17,13 +17,16 @@ const TitleBar:React.FC<{
   className, title,
 }) => {
   const theme = useRecoilValue(readTheme);
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
   const classes = useStyles();
   const marketState = useRecoilValue(readMarket);
 
   const market = formatMarket(marketState);
 
-  const logoUrl = R.pathOr(chainConfig.logo.default, ['logo', theme], chainConfig);
+  const logoUrl = R.pathOr(
+    theme === 'light' ? chainConfig.logo.default : chainConfig.logo.dark,
+    ['logo', theme], chainConfig,
+  );
 
   return (
     <div className={classnames(className, classes.root)}>
@@ -36,7 +39,7 @@ const TitleBar:React.FC<{
         {market.map((x) => (
           <div key={x.key} className={classes.item}>
             <Typography variant="body1" className="label">
-              {t(x.key)}
+              {t(`common:${x.key}`)}
             </Typography>
             <Typography variant="body1">
               {x.data}

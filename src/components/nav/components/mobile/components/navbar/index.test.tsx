@@ -9,8 +9,8 @@ import Navbar from '.';
 // ==================================
 // mocks
 // ==================================
-jest.mock('@assets/big-dipper-white.svg', () => (props) => <div id="WHITE" {...props} />);
-jest.mock('@assets/big-dipper-red.svg', () => (props) => <div id="RED" {...props} />);
+jest.mock('@assets/cascadia-dark.svg', () => (props) => <div id="WHITE" {...props} />);
+jest.mock('@assets/cascadia-light.svg', () => (props) => <div id="RED" {...props} />);
 // ==================================
 // global setup
 // ==================================

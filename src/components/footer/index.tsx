@@ -3,8 +3,8 @@ import classnames from 'classnames';
 import Trans from 'next-translate/Trans';
 import { useRecoilValue } from 'recoil';
 import useTranslation from 'next-translate/useTranslation';
-import FooterLogoLight from '@assets/big-dipper-red.svg';
-import FooterLogoDark from '@assets/big-dipper-white.svg';
+import FooterLogoLight from '@assets/cascadia-light.svg';
+import FooterLogoDark from '@assets/cascadia-dark.svg';
 import {
   Button,
   Divider,
@@ -112,7 +112,7 @@ const Footer: React.FC<{className?: string}> = ({ className }) => {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://raw.githubusercontent.com/forbole/big-dipper-2.0-cosmos/master/LICENSE"
+                  href="/#"
                 />
               ),
             ]}

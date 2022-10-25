@@ -11,7 +11,7 @@ import { Connections } from './components';
 import { useProfileDetails } from './hooks';
 
 const ProfileDetails = () => {
-  const { t } = useTranslation('profiles');
+  const { t } = useTranslation();
   const classes = useStyles();
   const {
     state,
@@ -20,12 +20,12 @@ const ProfileDetails = () => {
   return (
     <>
       <NextSeo
-        title={t('profileDetails')}
+        title={t('profiles:profileDetails')}
         openGraph={{
-          title: t('profileDetails'),
+          title: t('profiles:profileDetails'),
         }}
       />
-      <Layout navTitle={t('profileDetails')}>
+      <Layout navTitle={t('profiles:profileDetails')}>
         <LoadAndExist
           loading={state.loading}
           exists={state.exists}
