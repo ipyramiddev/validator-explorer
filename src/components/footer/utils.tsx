@@ -1,6 +1,6 @@
 export const donateLink = {
   key: 'donate',
-  url: `/#`,
+  url: '/#',
 };
 
 export const footerLinks = [
@@ -9,31 +9,31 @@ export const footerLinks = [
     links: [
       {
         key: 'website',
-        url: `/#`,
+        url: '/#',
       },
       {
         key: 'about',
-        url: `/#`,
+        url: '/#',
       },
       {
         key: 'docs',
-        url: `/#`,
+        url: '/#',
       },
       {
         key: 'stakeNow',
-        url: `/#`,
+        url: '/#',
       },
       {
         key: 'blog',
-        url: `/#`,
+        url: '/#',
       },
       {
         key: 'termsAndConditions',
-        url: `/#`,
+        url: '/#',
       },
       {
         key: 'privacyPolicy',
-        url: `/#`,
+        url: '/#',
       },
     ],
   },

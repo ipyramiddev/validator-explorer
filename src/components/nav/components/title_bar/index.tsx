@@ -25,7 +25,7 @@ const TitleBar:React.FC<{
 
   const logoUrl = R.pathOr(
     theme === 'light' ? chainConfig.logo.default : chainConfig.logo.dark,
-    ['logo', theme], chainConfig
+    ['logo', theme], chainConfig,
   );
 
   return (

@@ -117,7 +117,7 @@ const Footer: React.FC<{className?: string}> = ({ className }) => {
               ),
             ]}
             values={{
-              name: "generalConfig.maintainer.name",
+              name: generalConfig.maintainer.name,
             }}
           />
           {' '}

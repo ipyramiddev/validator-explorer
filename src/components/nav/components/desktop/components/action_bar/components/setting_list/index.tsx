@@ -26,7 +26,7 @@ const Settings: React.FC<{
   className?: string;
 }> = (props) => {
   const classes = useStyles();
-  const router = useRouter();
+  // const router = useRouter();
   const {
     t, lang,
   } = useTranslation('common');

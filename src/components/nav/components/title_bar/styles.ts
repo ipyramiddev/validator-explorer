@@ -28,7 +28,7 @@ export const useStyles = () => {
           margin: 'auto',
           [theme.breakpoints.up('lg')]: {
             margin: 'inherit',
-          }
+          },
           // width: '225px',
         },
         content: {

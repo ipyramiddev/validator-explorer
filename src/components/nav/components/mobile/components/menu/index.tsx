@@ -1,9 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import Link from 'next/link';
 import {
-  Drawer,
-  MenuItem,
   Typography,
 } from '@material-ui/core';
 import { useRouter } from 'next/router';
@@ -17,15 +14,16 @@ import ThemeIcon from '@assets/icon-theme.svg';
 import { useStyles } from './styles';
 import { MenuItems } from '../../..';
 import {
-  useLanguageDrawer, useThemeDrawer,
+  // useLanguageDrawer,
+  useThemeDrawer,
 } from './hooks';
 import { MenuProps } from './types';
 
 const Menu = (props: MenuProps) => {
-  const router = useRouter();
+  // const router = useRouter();
   const {
     t,
-    lang,
+    // lang,
   } = useTranslation('common');
 
   const {
@@ -118,7 +116,7 @@ const Menu = (props: MenuProps) => {
             className={classes.theme}
             role="button"
             onClick={() => themeOptions.handleChangeTheme(
-              themeOptions.theme === 'dark' ? 'light' : 'dark'
+              themeOptions.theme==='dark'?'light':'dark',
             )}
           >
             <span role="button">

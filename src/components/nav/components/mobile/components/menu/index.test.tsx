@@ -18,7 +18,7 @@ const mockI18n = {
   t: (key: string) => key,
   lang: 'en',
 };
-jest.mock('@material-ui/core/Drawer', () => (props) => <div id="drawer" {...props} />);
+jest.mock('@material-ui/core/Drawer',() => (props) => <div id="drawer" {...props} />);
 jest.mock('next-translate/useTranslation', () => () => mockI18n);
 jest.mock('next/router', () => ({
   useRouter: () => ({
@@ -69,15 +69,6 @@ describe('screen: Nav/Menu', () => {
     await wait();
     // expect(toggleNavMenus).toBeCalledTimes(1);
   });
-
-  // it('drawer displays on click', () => {
-  //   expect(component.root.findByProps({ className: 'makeStyles-drawer lang-drawer' }).props.open).toEqual(false);
-
-  //   renderer.act(() => {
-  //     component.root.findByProps({ className: 'makeStyles-language' }).props.onClick();
-  //   });
-  //   expect(component.root.findByProps({ className: 'makeStyles-drawer lang-drawer' }).props.open).toEqual(true);
-  // });
 });
 
 afterEach(() => {
