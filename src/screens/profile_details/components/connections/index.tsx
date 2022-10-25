@@ -23,7 +23,7 @@ const Connections: React.FC<{
 }) => {
   const { isDesktop } = useScreenSize();
   const classes = useStyles();
-  const { t } = useTranslation('accounts');
+  const { t } = useTranslation('');
   const {
     page,
     rowsPerPage,
@@ -36,7 +36,7 @@ const Connections: React.FC<{
   return (
     <Box>
       <Typography variant="h2">
-        {t('connectionsTitle')}
+        {t('accounts:connectionsTitle')}
       </Typography>
 
       {isDesktop ? (

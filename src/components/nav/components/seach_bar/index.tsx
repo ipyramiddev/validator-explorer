@@ -5,16 +5,16 @@ import { chainConfig } from '@src/configs';
 import { useSearchBar } from './hooks';
 
 const SearchBar: React.FC<{className?: string}> = ({ className }) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
   const {
     handleOnSubmit,
   } = useSearchBar(t);
 
   let placeholderText;
   if (chainConfig.extra.profile) {
-    placeholderText = t('searchBarPlaceholderDtag');
+    placeholderText = t('common:searchBarPlaceholderDtag');
   } else {
-    placeholderText = t('searchBarPlaceholder');
+    placeholderText = t('common:searchBarPlaceholder');
   }
 
   return (

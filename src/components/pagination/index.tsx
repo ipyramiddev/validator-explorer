@@ -23,7 +23,7 @@ const Pagination: React.FC<{
   handleChangeRowsPerPage,
   rowsPerPageOptions,
 }) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
   const classes = useStyles();
 
   // hides pagination if the total items is less than
@@ -39,7 +39,7 @@ const Pagination: React.FC<{
       labelRowsPerPage=""
       labelDisplayedRows={({
         from, to, count,
-      }) => t('paginationLabelOne', {
+      }) => t('common:paginationLabelOne', {
         from,
         to,
         count,

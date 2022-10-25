@@ -124,7 +124,7 @@ const Menu = (props: MenuProps) => {
             <span role="button">
               <ThemeIcon />
             </span>
-            <Typography variant="caption">{t(themeOptions.theme)}</Typography>
+            <Typography variant="caption">{t('themeOptions.theme')}</Typography>
           </div>
         </div>
       </div>

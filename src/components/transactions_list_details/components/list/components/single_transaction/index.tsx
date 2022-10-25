@@ -18,7 +18,7 @@ const SingleTransaction:React.FC<{
 }> = ({
   className, block, hash, time, messages, result, messageCount,
 }) => {
-  const { t } = useTranslation('transactions');
+  const { t } = useTranslation();
   const classes = useStyles();
 
   return (
@@ -32,13 +32,13 @@ const SingleTransaction:React.FC<{
         <div className={classes.itemPrimaryDetailsContainer}>
           <div className={classnames(classes.item, 'block')}>
             <Typography variant="h4" className="label">
-              {t('block')}
+              {t('transactions:block')}
             </Typography>
             {block}
           </div>
           <div className={classnames(classes.item, 'time')}>
             <Typography variant="h4" className="label">
-              {t('time')}
+              {t('transactions:time')}
             </Typography>
             <Typography variant="body1" className="value">
               {time}
@@ -46,7 +46,7 @@ const SingleTransaction:React.FC<{
           </div>
           <div className={classnames(classes.item, 'messages')}>
             <Typography variant="h4" className="label">
-              {t('messages')}
+              {t('transactions:messages')}
             </Typography>
             <Typography variant="body1" className="value">
               {messageCount}
@@ -54,7 +54,7 @@ const SingleTransaction:React.FC<{
           </div>
           <div className={classnames(classes.item, 'result')}>
             <Typography variant="h4" className="label">
-              {t('result')}
+              {t('transactions:result')}
             </Typography>
             {result}
           </div>

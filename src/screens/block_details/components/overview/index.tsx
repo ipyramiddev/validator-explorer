@@ -13,16 +13,16 @@ import { OverviewType } from '../../types';
 
 const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className }) => {
   const proposer = useProfileRecoil(props.proposer);
-  const { t } = useTranslation('blocks');
+  const { t } = useTranslation();
   const dateFormat = useRecoilValue(readDate);
 
   return (
     <BoxDetails
       className={className}
-      title={t('overview')}
+      title={t('blocks:overview')}
       details={[
         {
-          label: t('height'),
+          label: t('blocks:height'),
           detail: (
             <Typography variant="body1" className="value">
               {numeral(props.height).format('0,0')}
@@ -30,11 +30,11 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className 
           ),
         },
         {
-          label: t('hash'),
+          label: t('blocks:hash'),
           detail: props.hash,
         },
         {
-          label: t('proposer'),
+          label: t('blocks:proposer'),
           detail: (
             <AvatarName
               address={props.proposer}
@@ -44,11 +44,11 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className 
           ),
         },
         {
-          label: t('time'),
+          label: t('blocks:time'),
           detail: formatDayJs(dayjs.utc(props.timestamp), dateFormat),
         },
         {
-          label: t('txs'),
+          label: t('blocks:txs'),
           detail: numeral(props.txs).format('0,0'),
         },
       ]}

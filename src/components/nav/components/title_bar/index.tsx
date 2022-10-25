@@ -17,7 +17,7 @@ const TitleBar:React.FC<{
   className, title,
 }) => {
   const theme = useRecoilValue(readTheme);
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
   const classes = useStyles();
   const marketState = useRecoilValue(readMarket);
 
@@ -39,7 +39,7 @@ const TitleBar:React.FC<{
         {market.map((x) => (
           <div key={x.key} className={classes.item}>
             <Typography variant="body1" className="label">
-              {t(x.key)}
+              {t(`common:${x.key}`)}
             </Typography>
             <Typography variant="body1">
               {x.data}

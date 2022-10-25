@@ -14,12 +14,12 @@ exports[`screen: Home matches snapshot 1`] = `
     id="Hero"
   />
   <div
-    className="makeStyles-tokenomics"
-    id="Tokenomics"
-  />
-  <div
     className="makeStyles-consensus"
     id="Consensus"
+  />
+  <div
+    className="makeStyles-tokenomics"
+    id="Tokenomics"
   />
   <div
     className="makeStyles-blocks"

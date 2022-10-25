@@ -10,7 +10,7 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
         "label": "transactions:hash",
       },
       Object {
-        "detail": <Link
+        "detail": <ForwardRef(LinkComponent)
           href="/blocks/0"
           passHref={true}
         >
@@ -21,7 +21,7 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
           >
             0
           </WithStyles(ForwardRef(Typography))>
-        </Link>,
+        </ForwardRef(LinkComponent)>,
         "label": "transactions:height",
       },
       Object {

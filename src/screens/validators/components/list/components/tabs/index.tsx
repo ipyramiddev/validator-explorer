@@ -22,7 +22,7 @@ const TabsHeader: React.FC<{
   handleSearch,
 }) => {
   const classes = useStyles();
-  const { t } = useTranslation('validators');
+  const { t } = useTranslation();
 
   return (
     <div className={classnames(className, classes.root)}>
@@ -35,7 +35,7 @@ const TabsHeader: React.FC<{
         {tabLabels.map((x, i) => (
           <Tab
             key={x}
-            label={t(x)}
+            label={t(`validators:${x}`)}
             {...a11yProps(i)}
           />
         ))}
@@ -43,7 +43,7 @@ const TabsHeader: React.FC<{
       <Search
         className={classes.searchBar}
         callback={handleSearch}
-        placeholder={t('searchValidator')}
+        placeholder={t('validators:searchValidator')}
       />
     </div>
   );
