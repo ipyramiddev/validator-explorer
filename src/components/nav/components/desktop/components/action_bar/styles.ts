@@ -28,6 +28,9 @@ export const useStyles = () => {
             },
           },
         },
+        connectWallet: {
+          marginRight: theme.spacing(2),
+        },
         network: {
           marginRight: theme.spacing(2),
           '&.open': {
