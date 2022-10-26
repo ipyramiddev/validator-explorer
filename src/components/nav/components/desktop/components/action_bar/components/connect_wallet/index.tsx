@@ -19,12 +19,7 @@ const ConnectWallet: React.FC<{
         disabled={!!address}
         onClick={handleConnectWallet}
       >
-        {
-          (
-            address &&
-            `${address.slice(0, 6)}...${address.slice(address.length - 6)}`
-          ) || t('connectWallet')
-        }
+        { (address && `${address.slice(0, 6)}...${address.slice(address.length - 6)}`) || t('connectWallet') }
       </Button>
     </div>
   );
