@@ -4,7 +4,9 @@ import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { VariableSizeGrid as Grid } from 'react-window';
-import { Typography, Button } from '@material-ui/core';
+import {
+  Typography,
+} from '@material-ui/core';
 import { useGrid } from '@hooks';
 import {
   SortArrows,
@@ -13,6 +15,7 @@ import {
 } from '@components';
 import { getValidatorConditionClass } from '@utils/get_validator_condition';
 import { getValidatorStatus } from '@utils/get_validator_status';
+import { DelegateManagement } from './components';
 import { useStyles } from './styles';
 import { fetchColumns } from './utils';
 import { ItemType } from '../../types';
@@ -47,9 +50,6 @@ const Desktop: React.FC<{
     const percentDisplay = x.status === 3 ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
     const votingPower = numeral(x.votingPower).format('0,0');
 
-    const handleDelegate = (address: string) => {
-      alert(address);
-    }
     return ({
       idx: `#${i + 1}`,
       validator: (
@@ -76,14 +76,8 @@ const Desktop: React.FC<{
           {t(status.status)}
         </Typography>
       ),
-      action: (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => handleDelegate(x.validator.address)}
-        >
-          {t('delegate')}
-        </Button>
+      action: (        
+        <DelegateManagement validator={x.validator.address}/>
       ),
     });
   });
@@ -215,7 +209,6 @@ const Desktop: React.FC<{
         }}
       </AutoSizer>
     </div>
-
   );
 };
 
