@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import { generalConfig } from '@src/configs';
 
 declare global {
   interface Window {
@@ -25,6 +26,22 @@ export const useWallet = () => {
       if (walletAddress) {
         setAddress(walletAddress.toString());
         window.localStorage.setItem('address', walletAddress);
+        
+        // Add Cascadia chain if not exist.
+        const chainConfig = generalConfig.chain;
+
+        await provider.send('wallet_addEthereumChain', [{
+          chainId: `0x${chainConfig.CHAINID?.toString(16)}`,
+          chainName: chainConfig.NAME,
+          nativeCurrency: {
+            name: chainConfig.NAME,
+            symbol: chainConfig.TOKEN,
+            decimals: 18
+          },
+          rpcUrls: [chainConfig.RPC],
+          blockExplorerUrls: chainConfig.EXPLORER ? [chainConfig.EXPLORER] : null
+        }]);
+
       }
     }
   };
