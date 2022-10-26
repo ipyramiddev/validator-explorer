@@ -21,10 +21,12 @@ export const useWallet = () => {
       alert('Please Install Metamask.');
     } else {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const addresses = await provider.send('eth_requestAccounts', []);
-      if (addresses.length > 0) {
-        setAddress(addresses[0]);
-        window.localStorage.setItem('address', addresses[0]);
+      const walletAddress = await provider.send('eth_requestAccounts', [0]);
+      console.log(walletAddress);
+      if (walletAddress) {
+        console.log(typeof(walletAddress));
+        setAddress(walletAddress.toString());
+        window.localStorage.setItem('address', walletAddress);
       }
     }
   };
