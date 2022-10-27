@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { useDelegate } from '@hooks';
+import { generalConfig } from '@src/configs';
 
 type TStatus = 'delegate' | 'undelegate' | null;
 
-export const useDelegateManagement = (address: string) => {
+export const useDelegateManagement = (validatorAddr: string) => {
   const [open, setOpen] = useState<boolean>(false);
   const [status, setStatus] = useState<TStatus>(null);
   const [amount, setAmount] = useState<number>(0);
+  const {
+    requestDelegate
+  } = useDelegate(validatorAddr, generalConfig.chain);
 
   const handleOpen = () => {
     setOpen(true);
@@ -25,12 +30,14 @@ export const useDelegateManagement = (address: string) => {
     setAmount(parseFloat(value));
   }
 
-  const handleDelegate = () => {
-    alert(`Delegated: ${address}, Amount: ${amount}`);
-  }
+  const handleDelegate = async (address: string) => {
+    if (!amount) return;
+    await requestDelegate(address, (amount * Math.pow(10, 18)).toString());
+    setOpen(false);
+  };
 
   const handleUndelegate = () => {
-    alert(`Undelegated: ${address}, Amount: ${amount}`);
+    alert(`Undelegated: ${validatorAddr}, Amount: ${amount}`);
   }
 
   return {

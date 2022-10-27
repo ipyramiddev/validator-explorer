@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import {
   Typography,
@@ -12,14 +12,18 @@ import {
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import useTranslation from 'next-translate/useTranslation';
+import { useRecoilValue } from 'recoil';
+import { readAddress } from '@recoil/wallet';
 import { useDelegateManagement } from './hooks';
 import { useStyles } from './styles';
 
 const DelegateManagement: React.FC<{
   className?: string;
-  validator: string
+  validator: string;
 }> = (props) => {
   const { t } = useTranslation('validators');
+  const address = useRecoilValue(readAddress);
+
   const {
     open,
     status,
@@ -99,7 +103,7 @@ const DelegateManagement: React.FC<{
                   Back
                 </Button>
                 <Button color="primary"
-                  onClick={() => handleDelegate()}
+                  onClick={() => handleDelegate(address)}
                 >
                   Delegate
                 </Button>

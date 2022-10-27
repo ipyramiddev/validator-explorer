@@ -9,6 +9,7 @@ import { useSettingsRecoil } from '@recoil/settings';
 import { useBigDipperNetworksRecoil } from '@recoil/big_dipper_networks';
 import { useMarketRecoil } from '@recoil/market';
 import { useValidatorRecoil } from '@recoil/validators';
+import { useWalletRecoil } from '@recoil/wallet';
 import { InnerApp } from '..';
 import {
   useTheme,
@@ -22,6 +23,7 @@ const Main = (props: AppProps) => {
   useSettingsRecoil();
   useBigDipperNetworksRecoil();
   useMarketRecoil();
+  useWalletRecoil();
   const { loading } = useValidatorRecoil();
 
   // =====================================
