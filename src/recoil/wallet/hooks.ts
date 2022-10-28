@@ -15,12 +15,18 @@ export const useWalletRecoil = () => {
       setAddress(window.localStorage.getItem('address'));
     }
   }, []);
-
+  
   useEffect(() => {
     if (window.ethereum && address) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       provider.getBalance(address).then((balance) => {
-        setBalance(balance);
+        setBalance(balance.toString());
+      });
+
+      window.ethereum.on('accountsChanged', () => {
+        setAddress(null);
+        window.localStorage.removeItem('address');
+        setBalance(null);
       });
     }
   }, [address])

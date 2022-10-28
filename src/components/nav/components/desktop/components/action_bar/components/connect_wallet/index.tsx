@@ -14,10 +14,6 @@ const ConnectWallet: React.FC<{
   const { address } = useRecoilValue(atomState);
   const { connectWallet } = useWallet();
 
-  React.useEffect(() => {
-    console.log('address:', address);
-  }, [address]);
-
   return (
     <div className={classnames(props.className)}>
       <Button variant="outlined"

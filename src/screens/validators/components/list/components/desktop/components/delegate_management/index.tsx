@@ -68,8 +68,8 @@ const DelegateManagement: React.FC<{
             </Typography>
             <Typography className="value">
               {`${
-                balance&&balance.gt(0)?
-                (parseInt(balance.toString())/Math.pow(10,18)).toFixed(4)
+                balance && parseInt(balance) > 0?
+                (parseInt(balance) / Math.pow(10, 18)).toPrecision(4)
                 :0} CASCADIA`}
             </Typography>
           </div>
@@ -134,7 +134,7 @@ const DelegateManagement: React.FC<{
                   Undelegate
                 </Button>
                 <Button color="primary"
-                  disabled={ !(balance && balance.gt(0))}
+                  disabled={!(balance && parseInt(balance) > 0)}
                   onClick={() => handleChangeStatus('delegate')}
                 >
                   Delegate

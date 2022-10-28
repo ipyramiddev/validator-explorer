@@ -5,8 +5,13 @@ import {
   getSenderObj,
   signAndBroadcastTxMsg,
 } from '@utils/sign_and_broadcast_tx_msg';
+import { useRecoilState } from 'recoil';
+import { ethers } from 'ethers';
+import { writeBalance } from '@recoil/wallet';
 
 export const useDelegate = (validator: string, chainConfig: any) => {
+  const [balance, setBalance] = useRecoilState(writeBalance);
+  
   const delegateFee = {
     amount: '80000000000000000',
     denom: chainConfig.DENOM,
@@ -38,7 +43,10 @@ export const useDelegate = (validator: string, chainConfig: any) => {
       address
     );
 
-    console.log('res:', res);
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // provider.getBalance(address).then((balance) => {
+    //   setBalance(balance.toString());
+    // });
   } 
   
   return {
