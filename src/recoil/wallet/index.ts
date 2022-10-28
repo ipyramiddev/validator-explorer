@@ -5,6 +5,8 @@ import {
 import {
   readAddress,
   writeAddress,
+  readBalance,
+  writeBalance,
 } from './selectors';
 
 import {
@@ -14,6 +16,8 @@ import {
 export {
   atomState,
   readAddress,
+  readBalance,
   writeAddress,
+  writeBalance,
   useWalletRecoil,
 };

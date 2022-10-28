@@ -13,7 +13,7 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 import useTranslation from 'next-translate/useTranslation';
 import { useRecoilValue } from 'recoil';
-import { readAddress } from '@recoil/wallet';
+import { readAddress, readBalance } from '@recoil/wallet';
 import { useDelegateManagement } from './hooks';
 import { useStyles } from './styles';
 
@@ -23,6 +23,7 @@ const DelegateManagement: React.FC<{
 }> = (props) => {
   const { t } = useTranslation('validators');
   const address = useRecoilValue(readAddress);
+  const balance = useRecoilValue(readBalance);
 
   const {
     open,
@@ -40,6 +41,7 @@ const DelegateManagement: React.FC<{
   return (
     <div>
       <Button
+        disabled={!address}
         variant="contained"
         color="primary"
         onClick={handleOpen}
@@ -65,7 +67,10 @@ const DelegateManagement: React.FC<{
               {`${t("myDelegation")}:`}
             </Typography>
             <Typography className="value">
-              0 CASCADIA
+              {`${
+                balance&&balance.gt(0)?
+                (parseInt(balance.toString())/Math.pow(10,18)).toFixed(4)
+                :0} CASCADIA`}
             </Typography>
           </div>
           {status !== null && (
@@ -103,6 +108,7 @@ const DelegateManagement: React.FC<{
                   Back
                 </Button>
                 <Button color="primary"
+                  disabled={!amount}
                   onClick={() => handleDelegate(address)}
                 >
                   Delegate
@@ -128,6 +134,7 @@ const DelegateManagement: React.FC<{
                   Undelegate
                 </Button>
                 <Button color="primary"
+                  disabled={ !(balance && balance.gt(0))}
                   onClick={() => handleChangeStatus('delegate')}
                 >
                   Delegate

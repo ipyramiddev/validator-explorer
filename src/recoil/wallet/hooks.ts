@@ -1,17 +1,27 @@
 import { useEffect } from 'react';
-import { useRecoilState, useRecoilCallback } from 'recoil';
-import { atomState } from '@recoil/wallet';
-import { AtomState } from '@recoil/wallet/types';
+import { ethers } from 'ethers';
+import { useRecoilState } from 'recoil';
+import {
+  writeAddress,
+  writeBalance,
+} from '@recoil/wallet';
 
 export const useWalletRecoil = () => {
-  const [wallet, setWallet] = useRecoilState(atomState);
+  const [address, setAddress] = useRecoilState(writeAddress);
+  const [balance, setBalance] = useRecoilState(writeBalance);
 
   useEffect(() => {
     if (window.localStorage.getItem('address')) {
-      const wallet: AtomState = {
-        address: window.localStorage.getItem('address')
-      };
-      setWallet(wallet);
+      setAddress(window.localStorage.getItem('address'));
     }
   }, []);
+
+  useEffect(() => {
+    if (window.ethereum && address) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      provider.getBalance(address).then((balance) => {
+        setBalance(balance);
+      });
+    }
+  }, [address])
 }
