@@ -7,5 +7,14 @@
     "reportIssue": "https://github.com/forbole/big-dipper-2.0-cosmos/issues"
   },
   "previewImage": "https://s3.bigdipper.live/evmos.png",
-  "version": "base-v2.1.0"
+  "version": "base-v2.1.0",
+  "chain": {
+    "CHAINID": 9000,
+    "NAME": "cascadia_9000-1",
+    "TOKEN": "casca",
+    "RPC": "https://18.211.35.61:9000",
+    "REST_RPC": "http://18.211.35.61:1317",
+    "DENOM": "acascadia",
+    "EXPLORER": ""
+  }
 }

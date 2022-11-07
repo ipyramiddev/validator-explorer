@@ -8,6 +8,8 @@ import { usePagination } from './use_pagination';
 import { useInterval } from './use_interval';
 import { useDesmosProfile } from './use_desmos_profile';
 import { useWindowOrigin } from './use_window';
+import { useWallet } from './use_wallet';
+import { useDelegate } from './use_delegate';
 
 export {
   usePersistedState,
@@ -20,4 +22,6 @@ export {
   useInterval,
   useDesmosProfile,
   useWindowOrigin,
+  useWallet,
+  useDelegate,
 };

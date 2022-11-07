@@ -4,7 +4,9 @@ import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { VariableSizeGrid as Grid } from 'react-window';
-import { Typography } from '@material-ui/core';
+import {
+  Typography,
+} from '@material-ui/core';
 import { useGrid } from '@hooks';
 import {
   SortArrows,
@@ -13,6 +15,7 @@ import {
 } from '@components';
 import { getValidatorConditionClass } from '@utils/get_validator_condition';
 import { getValidatorStatus } from '@utils/get_validator_status';
+import { DelegateManagement } from './components';
 import { useStyles } from './styles';
 import { fetchColumns } from './utils';
 import { ItemType } from '../../types';
@@ -46,6 +49,7 @@ const Desktop: React.FC<{
     const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
     const percentDisplay = x.status === 3 ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
     const votingPower = numeral(x.votingPower).format('0,0');
+
     return ({
       idx: `#${i + 1}`,
       validator: (
@@ -71,6 +75,9 @@ const Desktop: React.FC<{
         <Typography variant="body1" className={classnames('status', status.theme)}>
           {t(status.status)}
         </Typography>
+      ),
+      action: (        
+        <DelegateManagement validator={x.validator.address}/>
       ),
     });
   });
@@ -202,7 +209,6 @@ const Desktop: React.FC<{
         }}
       </AutoSizer>
     </div>
-
   );
 };
 
