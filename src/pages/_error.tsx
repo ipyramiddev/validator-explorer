@@ -8,7 +8,7 @@ const ErrorPage = () => {
   );
 };
 
-ErrorPage.getInitialProps = ({
+ErrorPage.getServerSideProps = ({
   res, err,
 }: NextPageContext) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
