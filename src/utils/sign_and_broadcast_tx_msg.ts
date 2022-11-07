@@ -19,11 +19,11 @@ import axios from 'axios';
  */
 export async function ethToCascadia(
   addr: string,
-  nodeAddr: string
+  nodeAddr: string,
 ): Promise<string> {
   try {
     const { data } = await axios.get(
-      `${nodeAddr}/ethermint/evm/v1/cosmos_account/${addr}`
+      `${nodeAddr}/ethermint/evm/v1/cosmos_account/${addr}`,
     );
     return data.cosmos_address;
   } catch (err) {
@@ -41,15 +41,16 @@ export async function ethToCascadia(
  */
 export async function getSenderObj(
   addr: string,
-  nodeAddr: string
+  nodeAddr: string,
 ): Promise<any> {
   const accountCanto = await ethToCascadia(addr, nodeAddr);
   const endPointAccount = generateEndpointAccount(accountCanto ?? '');
   const { data } = await axios.get(
-    nodeAddr + endPointAccount
+    nodeAddr + endPointAccount,
   );
-  
-  return await reformatSender(data["account"]["base_account"]);
+
+  const res = await reformatSender(data.account.base_account);
+  return res;
 }
 
 export async function signAndBroadcastTxMsg(
@@ -57,21 +58,21 @@ export async function signAndBroadcastTxMsg(
   senderObj: any,
   chain: any,
   nodeAddress: string,
-  address: string
+  address: string,
 ) {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signature = await provider.send('eth_signTypedData_v4', [
     address,
-    JSON.stringify(msg.eipToSign)
+    JSON.stringify(msg.eipToSign),
   ]);
 
   const raw = generateRawTx(chain, senderObj, signature, msg);
-  
+
   const { data } = await axios.post(
     nodeAddress + generateEndpointBroadcast(),
-    generatePostBodyBroadcast(raw)
+    generatePostBodyBroadcast(raw),
   );
-  
+
   return data;
 
   // const postOptions = {
@@ -88,10 +89,10 @@ export async function signAndBroadcastTxMsg(
 
 async function reformatSender(addressData: any) {
   let pubkey: string;
-  if (addressData["pub_key"] === null) {
+  if (addressData.pub_key === null) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const signature = await signer.signMessage("generate_pubkey");
+    const signature = await signer.signMessage('generate_pubkey');
 
     pubkey = signatureToPubkey(
       signature,
@@ -99,17 +100,17 @@ async function reformatSender(addressData: any) {
         50, 215, 18, 245, 169, 63, 252, 16, 225, 169, 71, 95, 254, 165, 146,
         216, 40, 162, 115, 78, 147, 125, 80, 182, 25, 69, 136, 250, 65, 200, 94,
         178,
-      ])
+      ]),
     );
   } else {
-    pubkey = addressData["pub_key"]["key"];
+    pubkey = addressData.pub_key.key;
   }
 
   return {
-    accountNumber: addressData["account_number"],
+    accountNumber: addressData.account_number,
     pubkey,
-    sequence: addressData["sequence"],
-    accountAddress: addressData["address"],
+    sequence: addressData.sequence,
+    accountAddress: addressData.address,
   };
 }
 
@@ -119,6 +120,6 @@ function generateRawTx(chain: any, senderObj: any, signature: any, msg: any) {
   return createTxRawEIP712(
     msg.legacyAmino.body,
     msg.legacyAmino.authInfo,
-    extension
+    extension,
   );
 }

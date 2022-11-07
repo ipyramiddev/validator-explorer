@@ -1,6 +1,6 @@
 import { selector } from 'recoil';
-import { atomState } from './atom';
 import { mergeStateChange } from '@utils/merge_state_change';
+import { atomState } from './atom';
 
 const getAddress = ({ get }): string | null => {
   const state = get(atomState);
@@ -10,17 +10,19 @@ const getAddress = ({ get }): string | null => {
 const getBalance = ({ get }): string | null => {
   const state = get(atomState);
   return state.balance;
-}
+};
 
 export const readAddress = selector({
-    key: 'wallet.read.address',
-    get: getAddress,
+  key: 'wallet.read.address',
+  get: getAddress,
 });
 
 export const writeAddress = selector({
   key: 'wallet.write.address',
   get: getAddress,
-  set: ({ get, set }, newAddress: string) => {
+  set: ({
+    get, set,
+  }, newAddress: string) => {
     const prevState = get(atomState);
 
     const newState = mergeStateChange(prevState, {
@@ -38,7 +40,9 @@ export const readBalance = selector({
 export const writeBalance = selector({
   key: 'wallet.write.balance',
   get: getBalance,
-  set: ({ get, set }, newBalance: string | null) => {
+  set: ({
+    get, set,
+  }, newBalance: string | null) => {
     const prevState = get(atomState);
 
     const newState = mergeStateChange(prevState, {

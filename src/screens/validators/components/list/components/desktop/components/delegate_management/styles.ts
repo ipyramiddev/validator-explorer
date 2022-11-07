@@ -7,7 +7,7 @@ export const useStyles = () => {
         root: {
           '& .MuiDialog-paper': {
             minWidth: '400px',
-          }
+          },
         },
         closeIcon: {
           position: 'absolute',
@@ -29,20 +29,20 @@ export const useStyles = () => {
         },
         formItem: {
           '& .form-label': {
-            fontWeight: 600
+            fontWeight: 600,
           },
           '& .form-control': {
             padding: theme.spacing(0.5, 1),
             border: '1px solid #999999',
             width: '100%',
             '& p': {
-              opacity: 0.5
-            }
+              opacity: 0.5,
+            },
           },
         },
       });
-    }
+    },
   )();
-  
-  return styles; 
+
+  return styles;
 };

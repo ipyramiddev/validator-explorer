@@ -3,9 +3,8 @@ import { useRecoilValue } from 'recoil';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
 import { Button } from '@material-ui/core';
-import { useWallet } from './hooks';
 import { atomState } from '@recoil/wallet';
-
+import { useWallet } from './hooks';
 
 const ConnectWallet: React.FC<{
   className?: string
@@ -16,14 +15,15 @@ const ConnectWallet: React.FC<{
 
   return (
     <div className={classnames(props.className)}>
-      <Button variant="outlined"
+      <Button
+        variant="outlined"
         disabled={!!address}
         onClick={() => connectWallet()}
       >
         {
           (
-            address &&
-            `${address.slice(0, 6)}...${address.slice(address.length - 6)}`
+            address
+            && `${address.slice(0, 6)}...${address.slice(address.length - 6)}`
           ) || t('connectWallet')
         }
       </Button>

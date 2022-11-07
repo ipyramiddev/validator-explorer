@@ -4,10 +4,8 @@ import { generalConfig } from '@configs';
 import { writeAddress } from '@recoil/wallet';
 
 export const useWallet = () => {
-  const [address, setAddress] = useRecoilState(writeAddress);
-  
+  const [_, setAddress] = useRecoilState(writeAddress);
   const connectWallet = async () => {
-
     if (window.ethereum === undefined) {
       alert('Please Install Metamask.');
     } else {
@@ -16,7 +14,7 @@ export const useWallet = () => {
       if (walletAddress) {
         setAddress(walletAddress.toString());
         window.localStorage.setItem('address', walletAddress);
-        
+
         // Add Cascadia chain if not exist.
         const chainConfig = generalConfig.chain;
 
@@ -26,12 +24,11 @@ export const useWallet = () => {
           nativeCurrency: {
             name: chainConfig.NAME,
             symbol: chainConfig.TOKEN,
-            decimals: 18
+            decimals: 18,
           },
           rpcUrls: [chainConfig.RPC],
-          blockExplorerUrls: chainConfig.EXPLORER ? [chainConfig.EXPLORER] : null
+          blockExplorerUrls: chainConfig.EXPLORER ? [chainConfig.EXPLORER] : null,
         }]);
-
       }
     }
   };

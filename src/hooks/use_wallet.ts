@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import {
+  useState, useEffect,
+} from 'react';
 import { ethers } from 'ethers';
 import { generalConfig } from '@src/configs';
 
@@ -6,10 +8,10 @@ declare global {
   interface Window {
     ethereum: any;
   }
-};
+}
 
 export const useWallet = () => {
-  const [address, setAddress] = useState<string>(null)
+  const [address, setAddress] = useState<string>(null);
 
   useEffect(() => {
     if (window.localStorage.getItem('address')) {
@@ -17,7 +19,7 @@ export const useWallet = () => {
     }
   }, []);
 
-  const handleConnectWallet = async (e: any) => {
+  const handleConnectWallet = async () => {
     if (window.ethereum === undefined) {
       alert('Please Install Metamask.');
     } else {
@@ -26,7 +28,7 @@ export const useWallet = () => {
       if (walletAddress) {
         setAddress(walletAddress.toString());
         window.localStorage.setItem('address', walletAddress);
-        
+
         // Add Cascadia chain if not exist.
         const chainConfig = generalConfig.chain;
 
@@ -36,12 +38,11 @@ export const useWallet = () => {
           nativeCurrency: {
             name: chainConfig.NAME,
             symbol: chainConfig.TOKEN,
-            decimals: 18
+            decimals: 18,
           },
           rpcUrls: [chainConfig.RPC],
-          blockExplorerUrls: chainConfig.EXPLORER ? [chainConfig.EXPLORER] : null
+          blockExplorerUrls: chainConfig.EXPLORER ? [chainConfig.EXPLORER] : null,
         }]);
-
       }
     }
   };

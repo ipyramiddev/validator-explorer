@@ -76,8 +76,8 @@ const Desktop: React.FC<{
           {t(status.status)}
         </Typography>
       ),
-      action: (        
-        <DelegateManagement validator={x.validator.address}/>
+      action: (
+        <DelegateManagement validator={x.validator.address} />
       ),
     });
   });

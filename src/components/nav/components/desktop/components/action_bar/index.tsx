@@ -32,7 +32,7 @@ const ActionBar: React.FC<{
           className={classnames(classes.network, { open: isNetwork })}
           toggleNetwork={toggleNetwork}
         /> */}
-        <ConnectWallet className={classnames(classes.connectWallet)}/>
+        <ConnectWallet className={classnames(classes.connectWallet)} />
         <SettingsList />
       </div>
       <NetworkList

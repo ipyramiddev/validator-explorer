@@ -8,14 +8,14 @@ import {
 
 export const useWalletRecoil = () => {
   const [address, setAddress] = useRecoilState(writeAddress);
-  const [balance, setBalance] = useRecoilState(writeBalance);
+  const [_, setBalance] = useRecoilState(writeBalance);
 
   useEffect(() => {
     if (window.localStorage.getItem('address')) {
       setAddress(window.localStorage.getItem('address'));
     }
   }, []);
-  
+
   useEffect(() => {
     if (window.ethereum && address) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -29,5 +29,5 @@ export const useWalletRecoil = () => {
         setBalance(null);
       });
     }
-  }, [address])
-}
+  }, [address]);
+};
