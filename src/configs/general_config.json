@@ -12,8 +12,8 @@
     "CHAINID": 9000,
     "NAME": "cascadia_9000-1",
     "TOKEN": "casca",
-    "RPC": "https://18.211.35.61:9000",
-    "REST_RPC": "http://18.211.35.61:1317",
+    "RPC": "https://devnet.cascadia.foundation",
+    "REST_RPC": "https://devnet.cascadia.foundation:1317",
     "DENOM": "acascadia",
     "EXPLORER": ""
   }
