@@ -109,7 +109,7 @@ export const common = {
       },
       tags: {
         zero: '#E8E8E8',
-        one: '#2460FA',
+        one: '#0064c8',
         two: '#2BA891',
         three: '#E79720',
         four: '#F17047',
@@ -192,10 +192,10 @@ export const common = {
   },
 };
 
-export const lightTemplate:ThemeOptions = R.mergeDeepLeft(lightThemeOverride, common);
-export const darkTemplate:ThemeOptions = R.mergeDeepLeft(darkThemeOverride, common);
-export const deuteranopiaTemplate:ThemeOptions = R.mergeDeepLeft(deuteranopiaThemeOverride, common);
-export const tritanopiaTemplate:ThemeOptions = R.mergeDeepLeft(tritanopiaThemeOverride, common);
+export const lightTemplate: ThemeOptions = R.mergeDeepLeft(lightThemeOverride, common);
+export const darkTemplate: ThemeOptions = R.mergeDeepLeft(darkThemeOverride, common);
+export const deuteranopiaTemplate: ThemeOptions = R.mergeDeepLeft(deuteranopiaThemeOverride, common);
+export const tritanopiaTemplate: ThemeOptions = R.mergeDeepLeft(tritanopiaThemeOverride, common);
 
 // export const lightTheme = createMuiTheme(lightTemplate);
 // export const darkTheme = createMuiTheme(darkTemplate);
