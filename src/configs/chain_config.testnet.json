@@ -19,7 +19,7 @@
   "votingPowerTokenUnit": "cascadia",
   "tokenUnits": {
     "cascadia": {
-      "display": "cascadia",
+      "display": "CC",
       "exponent": 18
     }
   },
