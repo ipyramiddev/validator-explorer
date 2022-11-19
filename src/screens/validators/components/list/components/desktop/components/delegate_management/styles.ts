@@ -40,6 +40,16 @@ export const useStyles = () => {
             },
           },
         },
+        redelegateButton: {
+          color: '#e7ac06'
+        },
+        claimButton: {
+          color: '#098735'
+        },
+        buttonGroup: {
+          padding: '10px',
+          display: 'flex'
+        }
       });
     },
   )();

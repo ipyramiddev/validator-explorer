@@ -4,6 +4,7 @@ import {
 import {
   getSenderObj,
   signAndBroadcastTxMsg,
+  getDelegationObject,
 } from '@utils/sign_and_broadcast_tx_msg';
 
 export const useDelegate = (validator: string, chainConfig: any) => {
@@ -22,6 +23,8 @@ export const useDelegate = (validator: string, chainConfig: any) => {
   const requestDelegate = async (address: string, amount: string) => {
     const senderObj: any = await getSenderObj(address, chainConfig.REST_RPC);
 
+    console.log("senderObj: ", senderObj)
+
     const params = {
       validatorAddress: validator,
       amount,
@@ -30,6 +33,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
 
     // Create message to delegate
     const msg = createTxMsgDelegate(chain, senderObj, delegateFee, '', params);
+    console.log("msg: ", msg)
 
     await signAndBroadcastTxMsg(
       msg,
@@ -45,7 +49,12 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     // });
   };
 
+  const requestDelegationInfo = async (address: string, node_addr: string, validatorAddr: string) => {
+    return await getDelegationObject(address, node_addr, validatorAddr);
+  };
+
   return {
     requestDelegate,
+    requestDelegationInfo,
   };
 };

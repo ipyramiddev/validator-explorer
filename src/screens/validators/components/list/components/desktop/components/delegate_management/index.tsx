@@ -18,6 +18,7 @@ import {
 } from '@recoil/wallet';
 import { useDelegateManagement } from './hooks';
 import { useStyles } from './styles';
+import { useState } from 'react';
 
 const DelegateManagement: React.FC<{
   className?: string;
@@ -26,6 +27,7 @@ const DelegateManagement: React.FC<{
   const { t } = useTranslation('validators');
   const address = useRecoilValue(readAddress);
   const balance = useRecoilValue(readBalance);
+  const [delegationAmount, setDelegationAmount] = useState<string>('');
 
   const {
     open,
@@ -37,7 +39,18 @@ const DelegateManagement: React.FC<{
     handleChangeAmount,
     handleDelegate,
     handleUndelegate,
+    handleRedelegate,
+    handleClaimReward,
+    getDelegationInfo,
   } = useDelegateManagement(props.validator);
+
+  const handleDelegationAmount = (address: string, validatorAddr: string) => {
+
+    getDelegationInfo(address, validatorAddr).then((res) => {
+      setDelegationAmount(res.balance.amount);
+    })
+
+  }
   const classes = useStyles();
 
   let button: JSX.Element;
@@ -74,22 +87,68 @@ const DelegateManagement: React.FC<{
         </Button>
       </>
     );
-  } else {
+  } else if (status==='redelegate') {
     button = (
       <>
         <Button
-          color="secondary"
-          onClick={() => handleChangeStatus('undelegate')}
+          onClick={() => handleChangeStatus(null)}
         >
-          Undelegate
+          Back
         </Button>
         <Button
-          color="primary"
-          disabled={!(balance && parseInt(balance, 10) > 0)}
-          onClick={() => handleChangeStatus('delegate')}
+          onClick={() => handleRedelegate()}
+          className={classnames(classes.redelegateButton)}
         >
-          Delegate
+          Redelegate
         </Button>
+      </>
+    );
+  } else if (status === 'claimReward') {
+    button = (
+      <>
+        <Button
+          onClick={() => handleChangeStatus(null)}
+        >
+          Back
+        </Button>
+        <Button
+          onClick={() => handleClaimReward()}
+          className={classnames(classes.claimButton)}
+        >
+          Claim Reward
+        </Button>
+      </>
+    );
+  } else {
+    button = (
+      <>
+        <div className={classnames(classes.buttonGroup)}>
+          <Button
+            color="primary"
+            disabled={!(balance && parseInt(balance, 10) > 0)}
+            onClick={() => handleChangeStatus('delegate')}
+          >
+            Delegate
+          </Button>
+          <Button
+            onClick={() => handleChangeStatus('redelegate')}
+            className={classnames(classes.redelegateButton)}
+          >
+            Redelegate
+          </Button>
+          <Button
+            color="secondary"
+            onClick={() => handleChangeStatus('undelegate')}
+          >
+            Undelegate
+          </Button>
+          <Button
+            onClick={() => handleChangeStatus('claimReward')}
+            className={classnames(classes.claimButton)}
+          >
+            Claim Reward
+          </Button>
+        </div>
       </>
     );
   }
@@ -99,7 +158,11 @@ const DelegateManagement: React.FC<{
         disabled={!address}
         variant="contained"
         color="primary"
-        onClick={handleOpen}
+        onClick={() => {
+          handleOpen();
+          handleDelegationAmount(address, props.validator);
+          console.log(delegationAmount);
+        }}
       >
         {t('manage')}
       </Button>
@@ -119,23 +182,24 @@ const DelegateManagement: React.FC<{
         <DialogContent dividers>
           <div className={classnames(classes.listItem)}>
             <Typography className="label">
-              {`${t('myDelegation')}:`}
+              {`${t('availableBalance')}:`}
             </Typography>
             <Typography className="value">
-              {`${
-                balance && parseInt(balance, 10) > 0
-                  ? (parseInt(balance, 10) / (10 ** 18)).toPrecision(4)
-                  : 0} CASCADIA`}
+              {`${balance && parseInt(balance, 10) > 0
+                ? (parseInt(balance, 10) / (10 ** 18)).toPrecision(4)
+                : 0} CASCADIA`}
             </Typography>
           </div>
           {status !== null && (
             <>
               <div className={classnames(classes.listItem)}>
                 <Typography className="label">
-                  {`${t('availableBalance')}:`}
+                  {`${t('myDelegation')}:`}
                 </Typography>
                 <Typography className="value">
-                  0 CASCADIA
+                  {`${delegationAmount && parseInt(delegationAmount, 10) > 0
+                    ? (parseInt(delegationAmount, 10) / (10 ** 18)).toPrecision(4)
+                    : 0} CASCADIA`}
                 </Typography>
               </div>
               <div className={classnames(classes.formItem)}>

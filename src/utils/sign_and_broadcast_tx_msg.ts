@@ -1,5 +1,6 @@
 import {
   generateEndpointAccount,
+  generateEndpointGetDelegations,
   generateEndpointBroadcast,
   generatePostBodyBroadcast,
 } from '@tharsis/provider';
@@ -51,6 +52,32 @@ export async function getSenderObj(
 
   const res = await reformatSender(data.account.base_account);
   return res;
+}
+
+/**
+ * Uses the eth hex address, converts it to a canto address,
+ * then gets the delegation response object.
+ * @param {string} addr eth address
+ * @param {string} nodeAddr rest_rpc url of cascadia chain
+ * @param {string} validatorAddr validator address of cascadia chain
+ * @return {object} delegation amount in delegation_responses except for pagination
+ */
+export async function getDelegationObject(
+  addr: string,
+  nodeAddr: string,
+  validatorAddr: string,
+) {
+  const accountCascadia = await ethToCascadia(addr, nodeAddr);
+  const endPointAccount = generateEndpointGetDelegations(accountCascadia ?? '');
+  const { data } = await axios.get(
+    nodeAddr + endPointAccount,
+  );
+  // return data.delegation_responses[0].delegation;
+  for (let i = 0; i < data.delegation_responses.length; i++) {
+    if (data.delegation_responses[i].delegation.validator_address == validatorAddr) {
+      return data.delegation_responses[i];
+    }
+  }
 }
 
 export async function signAndBroadcastTxMsg(

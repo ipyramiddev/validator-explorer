@@ -4,7 +4,7 @@ import {
 import { useDelegate } from '@hooks';
 import { generalConfig } from '@src/configs';
 
-type TStatus = 'delegate' | 'undelegate' | null;
+type TStatus = 'delegate' | 'undelegate' | 'redelegate' | 'claimReward' | null;
 
 export const useDelegateManagement = (validatorAddr: string) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -12,6 +12,7 @@ export const useDelegateManagement = (validatorAddr: string) => {
   const [amount, setAmount] = useState<number>(0);
   const {
     requestDelegate,
+    requestDelegationInfo,
   } = useDelegate(validatorAddr, generalConfig.chain);
 
   const handleOpen = () => {
@@ -42,6 +43,18 @@ export const useDelegateManagement = (validatorAddr: string) => {
     alert(`Undelegated: ${validatorAddr}, Amount: ${amount}`);
   };
 
+  const handleRedelegate = () => {
+    alert(`Redelegated: ${validatorAddr}, Amount: ${amount}`);
+  };
+
+  const handleClaimReward = () => {
+    alert(`Claimed: ${validatorAddr}, Amount: ${amount}`);
+  };
+
+  const getDelegationInfo = async (address: string, validatorAddr: string) => {
+    return await requestDelegationInfo(address, generalConfig.chain.REST_RPC, validatorAddr);
+  };
+
   return {
     open,
     status,
@@ -52,5 +65,8 @@ export const useDelegateManagement = (validatorAddr: string) => {
     handleChangeAmount,
     handleDelegate,
     handleUndelegate,
+    handleRedelegate,
+    handleClaimReward,
+    getDelegationInfo,
   };
 };

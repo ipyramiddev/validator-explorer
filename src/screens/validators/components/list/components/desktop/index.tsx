@@ -148,19 +148,19 @@ const Desktop: React.FC<{
                       role="button"
                     >
                       {formattedComponent || (
-                      <Typography
-                        variant="h4"
-                        align={align}
-                      >
-                        {t(key)}
-                        {!!sort && (
-                        <SortArrows
-                          sort={props.sortKey === sortingKey
-                            ? props.sortDirection
-                            : undefined}
-                        />
-                        )}
-                      </Typography>
+                        <Typography
+                          variant="h4"
+                          align={align}
+                        >
+                          {t(key)}
+                          {!!sort && (
+                            <SortArrows
+                              sort={props.sortKey === sortingKey
+                                ? props.sortDirection
+                                : undefined}
+                            />
+                          )}
+                        </Typography>
                       )}
                     </div>
                   );
