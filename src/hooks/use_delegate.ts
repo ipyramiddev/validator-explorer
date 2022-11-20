@@ -1,5 +1,6 @@
 import {
   createTxMsgDelegate,
+  createTxMsgUndelegate,
 } from '@tharsis/transactions';
 import {
   getSenderObj,
@@ -23,8 +24,6 @@ export const useDelegate = (validator: string, chainConfig: any) => {
   const requestDelegate = async (address: string, amount: string) => {
     const senderObj: any = await getSenderObj(address, chainConfig.REST_RPC);
 
-    console.log("senderObj: ", senderObj)
-
     const params = {
       validatorAddress: validator,
       amount,
@@ -33,7 +32,6 @@ export const useDelegate = (validator: string, chainConfig: any) => {
 
     // Create message to delegate
     const msg = createTxMsgDelegate(chain, senderObj, delegateFee, '', params);
-    console.log("msg: ", msg)
 
     await signAndBroadcastTxMsg(
       msg,
@@ -49,12 +47,40 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     // });
   };
 
+  const requestUndelegate = async (address: string, amount: string) => {
+    const senderObj: any = await getSenderObj(address, chainConfig.REST_RPC);
+    console.log("senderObj: ", senderObj);
+    const params = {
+      validatorAddress: validator,
+      amount,
+      denom: chainConfig.DENOM,
+    };
+
+    // Create message to delegate
+    const msg = createTxMsgUndelegate(chain, senderObj, delegateFee, '', params);
+    console.log("msg: ", msg);
+    await signAndBroadcastTxMsg(
+      msg,
+      senderObj,
+      chain,
+      chainConfig.REST_RPC,
+      address,
+    );
+
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // provider.getBalance(address).then((balance) => {
+    //   setBalance(balance.toString());
+    // });
+  };
+
+
   const requestDelegationInfo = async (address: string, node_addr: string, validatorAddr: string) => {
     return await getDelegationObject(address, node_addr, validatorAddr);
   };
 
   return {
     requestDelegate,
+    requestUndelegate,
     requestDelegationInfo,
   };
 };

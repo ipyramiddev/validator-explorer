@@ -81,13 +81,13 @@ const DelegateManagement: React.FC<{
         </Button>
         <Button
           color="secondary"
-          onClick={() => handleUndelegate()}
+          onClick={() => handleUndelegate(address)}
         >
           Undelegate
         </Button>
       </>
     );
-  } else if (status==='redelegate') {
+  } else if (status === 'redelegate') {
     button = (
       <>
         <Button
@@ -161,7 +161,6 @@ const DelegateManagement: React.FC<{
         onClick={() => {
           handleOpen();
           handleDelegationAmount(address, props.validator);
-          console.log(delegationAmount);
         }}
       >
         {t('manage')}

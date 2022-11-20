@@ -12,6 +12,7 @@ export const useDelegateManagement = (validatorAddr: string) => {
   const [amount, setAmount] = useState<number>(0);
   const {
     requestDelegate,
+    requestUndelegate,
     requestDelegationInfo,
   } = useDelegate(validatorAddr, generalConfig.chain);
 
@@ -39,8 +40,10 @@ export const useDelegateManagement = (validatorAddr: string) => {
     setOpen(false);
   };
 
-  const handleUndelegate = () => {
-    alert(`Undelegated: ${validatorAddr}, Amount: ${amount}`);
+  const handleUndelegate = async (address: string) => {
+    if (!amount) return;
+    await requestUndelegate(address, (amount * (10 ** 18)).toString());
+    setOpen(false);
   };
 
   const handleRedelegate = () => {
