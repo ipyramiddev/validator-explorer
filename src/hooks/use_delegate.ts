@@ -1,6 +1,7 @@
 import {
   createTxMsgDelegate,
   createTxMsgUndelegate,
+  createTxMsgBeginRedelegate,
 } from '@tharsis/transactions';
 import {
   getSenderObj,
@@ -13,7 +14,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
   const delegateFee = {
     amount: '80000000000000000',
     denom: chainConfig.DENOM,
-    gas: '300000',
+    gas: '400000',
   };
 
   const chain = {
@@ -33,7 +34,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     // Create message to delegate
     const msg = createTxMsgDelegate(chain, senderObj, delegateFee, '', params);
 
-    await signAndBroadcastTxMsg(
+    return await signAndBroadcastTxMsg(
       msg,
       senderObj,
       chain,
@@ -49,7 +50,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
 
   const requestUndelegate = async (address: string, amount: string) => {
     const senderObj: any = await getSenderObj(address, chainConfig.REST_RPC);
-    console.log("senderObj: ", senderObj);
+
     const params = {
       validatorAddress: validator,
       amount,
@@ -58,8 +59,8 @@ export const useDelegate = (validator: string, chainConfig: any) => {
 
     // Create message to delegate
     const msg = createTxMsgUndelegate(chain, senderObj, delegateFee, '', params);
-    console.log("msg: ", msg);
-    await signAndBroadcastTxMsg(
+
+    return await signAndBroadcastTxMsg(
       msg,
       senderObj,
       chain,
@@ -73,6 +74,29 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     // });
   };
 
+  const requestRedelegate = async (address: string, amount: string, sourceAddr: string, destAddr: string) => {
+    // get sender object using eth address
+    const senderObj = await getSenderObj(address, chainConfig.REST_RPC);
+    console.log('senderObj: ', senderObj);
+
+    const params = {
+      validatorSrcAddress: sourceAddr,
+      validatorDstAddress: destAddr,
+      amount: amount,
+      denom: chainConfig.DENOM,
+    };
+
+    // create the msg to delegate
+    const msg = createTxMsgBeginRedelegate(chain, senderObj, delegateFee, '', params);
+    console.log('msg: ', msg);
+    return await signAndBroadcastTxMsg(
+      msg,
+      senderObj,
+      chain,
+      chainConfig.REST_RPC,
+      address,
+    );
+  };
 
   const requestDelegationInfo = async (address: string, node_addr: string, validatorAddr: string) => {
     return await getDelegationObject(address, node_addr, validatorAddr);
@@ -81,6 +105,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
   return {
     requestDelegate,
     requestUndelegate,
+    requestRedelegate,
     requestDelegationInfo,
   };
 };

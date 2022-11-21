@@ -13,6 +13,7 @@ export const useDelegateManagement = (validatorAddr: string) => {
   const {
     requestDelegate,
     requestUndelegate,
+    requestRedelegate,
     requestDelegationInfo,
   } = useDelegate(validatorAddr, generalConfig.chain);
 
@@ -36,18 +37,32 @@ export const useDelegateManagement = (validatorAddr: string) => {
 
   const handleDelegate = async (address: string) => {
     if (!amount) return;
-    await requestDelegate(address, (amount * (10 ** 18)).toString());
+    const res = await requestDelegate(address, (amount * (10 ** 18)).
+      toString());
+    console.log(res);
     setOpen(false);
   };
 
   const handleUndelegate = async (address: string) => {
     if (!amount) return;
-    await requestUndelegate(address, (amount * (10 ** 18)).toString());
+    const res = await requestUndelegate(address, (amount * (10 ** 18)).toString());
+    console.log(res);
     setOpen(false);
   };
 
-  const handleRedelegate = () => {
-    alert(`Redelegated: ${validatorAddr}, Amount: ${amount}`);
+  const handleRedelegate = async (address: string, sourceAddr: string, destAddr: string) => {
+    // alert(`Redelegated: ${sourceAddr} to ${destAddr}, Amount: ${amount}, address: ${address}`);
+    if (!destAddr) {
+      alert('Please set destination validator to redelegate.');
+      return;
+    }
+    if (!amount) {
+      alert('Please set amount to redelegate.');
+      return;
+    }
+    const res = await requestRedelegate(address, (amount * (10 ** 18)).toString(), sourceAddr, destAddr);
+    console.log(res);
+    setOpen(false);
   };
 
   const handleClaimReward = () => {

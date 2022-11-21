@@ -28,6 +28,7 @@ export const useStyles = () => {
           },
         },
         formItem: {
+          paddingTop: '10px',
           '& .form-label': {
             fontWeight: 600,
           },
@@ -41,15 +42,15 @@ export const useStyles = () => {
           },
         },
         redelegateButton: {
-          color: '#e7ac06'
+          color: '#e7ac06',
         },
         claimButton: {
-          color: '#098735'
+          color: '#098735',
         },
         buttonGroup: {
           padding: '10px',
-          display: 'flex'
-        }
+          display: 'flex',
+        },
       });
     },
   )();

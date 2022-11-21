@@ -35,7 +35,6 @@ const Desktop: React.FC<{
   const { t } = useTranslation('validators');
   const classes = useStyles();
   const columns = fetchColumns(t);
-
   const {
     gridRef,
     columnRef,
@@ -43,13 +42,15 @@ const Desktop: React.FC<{
     getColumnWidth,
     getRowHeight,
   } = useGrid(columns);
-
+  const allValidators = [];
+  props.items.map((x, i) => {
+    allValidators.push(x.validator.address);
+  })
   const formattedItems = props.items.map((x, i) => {
     const status = getValidatorStatus(x.status, x.jailed, x.tombstoned);
     const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
     const percentDisplay = x.status === 3 ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
     const votingPower = numeral(x.votingPower).format('0,0');
-
     return ({
       idx: `#${i + 1}`,
       validator: (
@@ -77,11 +78,10 @@ const Desktop: React.FC<{
         </Typography>
       ),
       action: (
-        <DelegateManagement validator={x.validator.address} />
+        <DelegateManagement allValidators={allValidators} validator={x.validator.address} />
       ),
     });
   });
-
   return (
     <div className={classnames(props.className, classes.root)}>
       <AutoSizer onResize={onResize}>

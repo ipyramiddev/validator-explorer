@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
+import Select from 'react-select';
 import {
   Typography,
   Dialog,
@@ -18,17 +19,17 @@ import {
 } from '@recoil/wallet';
 import { useDelegateManagement } from './hooks';
 import { useStyles } from './styles';
-import { useState } from 'react';
 
 const DelegateManagement: React.FC<{
   className?: string;
   validator: string;
+  allValidators: Array<string>;
 }> = (props) => {
   const { t } = useTranslation('validators');
   const address = useRecoilValue(readAddress);
   const balance = useRecoilValue(readBalance);
   const [delegationAmount, setDelegationAmount] = useState<string>('');
-
+  const [newValidator, setNewValidator] = useState<string>('');
   const {
     open,
     status,
@@ -43,14 +44,11 @@ const DelegateManagement: React.FC<{
     handleClaimReward,
     getDelegationInfo,
   } = useDelegateManagement(props.validator);
-
   const handleDelegationAmount = (address: string, validatorAddr: string) => {
-
     getDelegationInfo(address, validatorAddr).then((res) => {
       setDelegationAmount(res.balance.amount);
-    })
-
-  }
+    });
+  };
   const classes = useStyles();
 
   let button: JSX.Element;
@@ -96,7 +94,7 @@ const DelegateManagement: React.FC<{
           Back
         </Button>
         <Button
-          onClick={() => handleRedelegate()}
+          onClick={() => handleRedelegate(address, props.validator, newValidator)}
           className={classnames(classes.redelegateButton)}
         >
           Redelegate
@@ -172,7 +170,11 @@ const DelegateManagement: React.FC<{
       >
         <DialogTitle>
           <Typography variant="h2">
-            {t('delegate')}
+            {status == null && t('delegate')}
+            {status == 'delegate' && t('delegate')}
+            {status == 'undelegate' && t('undelegate')}
+            {status == 'redelegate' && t('redelegate')}
+            {status == 'claimReward' && t('claimReward')}
           </Typography>
           <IconButton aria-label="close" className={classes.closeIcon} onClick={handleClose}>
             <CloseIcon />
@@ -201,6 +203,36 @@ const DelegateManagement: React.FC<{
                     : 0} CASCADIA`}
                 </Typography>
               </div>
+              {status == 'redelegate' && (
+                <div className={classnames(classes.formItem)}>
+                  <Typography className="form-label">
+                    Destination validator
+                  </Typography>
+                  <div>
+                    <Select
+                      // className="react-select-container"
+                      // classNamePrefix="react-select"
+                      placeholder="choose a validator..."
+                      maxMenuHeight={80}
+                      options={props.allValidators.map((val, index) => {
+                        //take out the current validator from the list
+                        if (
+                          val != props.validator
+                        ) {
+                          return {
+                            value: val,
+                            label: val,
+                          };
+                        }
+                        return {};
+                      })}
+                      onChange={(val) => {
+                        setNewValidator(val?.value);
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
               <div className={classnames(classes.formItem)}>
                 <Typography className="form-label">
                   {`${t('amount')} to ${status}:`}
