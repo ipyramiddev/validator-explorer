@@ -29,6 +29,7 @@ const DelegateManagement: React.FC<{
   const address = useRecoilValue(readAddress);
   const balance = useRecoilValue(readBalance);
   const [delegationAmount, setDelegationAmount] = useState<string>('');
+  const [rewardAmount, setRewardAmount] = useState<string>('');
   const [newValidator, setNewValidator] = useState<string>('');
   const {
     open,
@@ -43,12 +44,20 @@ const DelegateManagement: React.FC<{
     handleRedelegate,
     handleClaimReward,
     getDelegationInfo,
+    getRewardInfo,
   } = useDelegateManagement(props.validator);
   const handleDelegationAmount = (metamaskAddress: string, validatorAddr: string) => {
     getDelegationInfo(metamaskAddress, validatorAddr).then((res) => {
       setDelegationAmount(res.balance.amount);
     });
   };
+
+  const handleRewardAmount = (metamaskAddress: string, validatorAddr: string) => {
+    getRewardInfo(metamaskAddress, validatorAddr).then((res) => {
+      setRewardAmount(res);
+    });
+  };
+
   const classes = useStyles();
 
   let button: JSX.Element;
@@ -110,7 +119,7 @@ const DelegateManagement: React.FC<{
           Back
         </Button>
         <Button
-          onClick={() => handleClaimReward()}
+          onClick={() => handleClaimReward(address, props.validator)}
           className={classnames(classes.claimButton)}
         >
           Claim Reward
@@ -159,6 +168,7 @@ const DelegateManagement: React.FC<{
         onClick={() => {
           handleOpen();
           handleDelegationAmount(address, props.validator);
+          handleRewardAmount(address, props.validator);
         }}
       >
         {t('manage')}
@@ -233,19 +243,44 @@ const DelegateManagement: React.FC<{
                   </div>
                 </div>
               )}
-              <div className={classnames(classes.formItem)}>
-                <Typography className="form-label">
-                  {`${t('amount')} to ${status}:`}
-                </Typography>
-                <InputBase
-                  className="form-control"
-                  value={amount}
-                  onChange={handleChangeAmount}
-                  endAdornment={(
-                    <Typography>CASCADIA</Typography>
-                  )}
-                />
-              </div>
+              {status !== 'claimReward' ? (
+                <>
+                  <div className={classnames(classes.formItem)}>
+                    <Typography className="form-label">
+                      {`${t('amount')} to ${status}:`}
+                    </Typography>
+                    <InputBase
+                      className="form-control"
+                      value={amount}
+                      onChange={handleChangeAmount}
+                      endAdornment={(
+                        <Typography>CASCADIA</Typography>
+                      )}
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className={classnames(classes.listItem)}>
+                    <Typography className="label">
+                      My Rewards:
+                    </Typography>
+                    {/* <InputBase
+                      className="form-control"
+                      value={amount}
+                      onChange={handleChangeAmount}
+                      endAdornment={(
+                        <Typography>23</Typography>
+                      )}
+                    /> */}
+                    <Typography className="value">
+                      {`${rewardAmount && parseInt(rewardAmount, 10) > 0
+                        ? (parseInt(rewardAmount, 10) / (10 ** 18)).toPrecision(4)
+                        : 0} CASCADIA`}
+                    </Typography>
+                  </div>
+                </>
+              )}
             </>
           )}
         </DialogContent>

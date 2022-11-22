@@ -15,6 +15,8 @@ export const useDelegateManagement = (validatorAddr: string) => {
     requestUndelegate,
     requestRedelegate,
     requestDelegationInfo,
+    requestRewardInfo,
+    requestClaimReward,
   } = useDelegate(validatorAddr, generalConfig.chain);
 
   const handleOpen = () => {
@@ -49,14 +51,12 @@ export const useDelegateManagement = (validatorAddr: string) => {
   };
 
   const handleRedelegate = async (address: string, sourceAddr: string, destAddr: string) => {
-    // alert(`Redelegated: ${sourceAddr} to ${destAddr}, Amount: ${amount}, address: ${address}`);
     if (!destAddr) {
-      // eslint-disable-next-line no-alert
       alert('Please set destination validator to redelegate.');
       return;
     }
     if (!amount) {
-      // alert('Please set amount to redelegate.');
+      alert('Please set amount to redelegate.');
       return;
     }
     await requestRedelegate(
@@ -68,12 +68,17 @@ export const useDelegateManagement = (validatorAddr: string) => {
     setOpen(false);
   };
 
-  const handleClaimReward = () => {
-    // alert(`Claimed: ${validatorAddr}, Amount: ${amount}`);
+  const handleClaimReward = async (address:string, valiAddr:string) => {
+    await requestClaimReward(address, valiAddr);
   };
 
   const getDelegationInfo = async (address: string, valiAddr: string) => {
     const res = await requestDelegationInfo(address, generalConfig.chain.REST_RPC, valiAddr);
+    return res;
+  };
+
+  const getRewardInfo = async (address: string, valiAddr: string) => {
+    const res = await requestRewardInfo(address, generalConfig.chain.REST_RPC, valiAddr);
     return res;
   };
 
@@ -90,5 +95,6 @@ export const useDelegateManagement = (validatorAddr: string) => {
     handleRedelegate,
     handleClaimReward,
     getDelegationInfo,
+    getRewardInfo,
   };
 };
