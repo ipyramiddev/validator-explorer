@@ -18,7 +18,7 @@ export const lightThemeOverride = {
   palette: {
     type: 'light',
     primary: {
-      main: '#0064C8', //change primary color
+      main: '#0064C8', // change primary color
       contrastText: '#fff',
     },
     background: {
@@ -41,9 +41,9 @@ export const lightThemeOverride = {
         fontTwo,
         fontThree,
         fontFour: '#999999',
-        highlight: '#0064C8', //change font color
+        highlight: '#0064C8', // change font color
       },
-      primaryData: {//change dashboard pallet color
+      primaryData: { // change dashboard pallet color
         one: '#0064c8',
         two: '#004b96',
         three: '#003264',
