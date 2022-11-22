@@ -44,8 +44,8 @@ const DelegateManagement: React.FC<{
     handleClaimReward,
     getDelegationInfo,
   } = useDelegateManagement(props.validator);
-  const handleDelegationAmount = (address: string, validatorAddr: string) => {
-    getDelegationInfo(address, validatorAddr).then((res) => {
+  const handleDelegationAmount = (metamaskAddress: string, validatorAddr: string) => {
+    getDelegationInfo(metamaskAddress, validatorAddr).then((res) => {
       setDelegationAmount(res.balance.amount);
     });
   };
@@ -170,11 +170,11 @@ const DelegateManagement: React.FC<{
       >
         <DialogTitle>
           <Typography variant="h2">
-            {status == null && t('delegate')}
-            {status == 'delegate' && t('delegate')}
-            {status == 'undelegate' && t('undelegate')}
-            {status == 'redelegate' && t('redelegate')}
-            {status == 'claimReward' && t('claimReward')}
+            {status === null && t('delegate')}
+            {status === 'delegate' && t('delegate')}
+            {status === 'undelegate' && t('undelegate')}
+            {status === 'redelegate' && t('redelegate')}
+            {status === 'claimReward' && t('claimReward')}
           </Typography>
           <IconButton aria-label="close" className={classes.closeIcon} onClick={handleClose}>
             <CloseIcon />
@@ -203,7 +203,7 @@ const DelegateManagement: React.FC<{
                     : 0} CASCADIA`}
                 </Typography>
               </div>
-              {status == 'redelegate' && (
+              {status === 'redelegate' && (
                 <div className={classnames(classes.formItem)}>
                   <Typography className="form-label">
                     Destination validator
@@ -214,10 +214,10 @@ const DelegateManagement: React.FC<{
                       // classNamePrefix="react-select"
                       placeholder="choose a validator..."
                       maxMenuHeight={80}
-                      options={props.allValidators.map((val, index) => {
-                        //take out the current validator from the list
+                      options={props.allValidators.map((val) => {
+                        // take out the current validator from the list
                         if (
-                          val != props.validator
+                          val !== props.validator
                         ) {
                           return {
                             value: val,

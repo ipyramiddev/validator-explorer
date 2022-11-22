@@ -28,7 +28,7 @@ export async function ethToCascadia(
     );
     return data.cosmos_address;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return null;
   }
 }
@@ -73,8 +73,8 @@ export async function getDelegationObject(
     nodeAddr + endPointAccount,
   );
   // return data.delegation_responses[0].delegation;
-  for (let i = 0; i < data.delegation_responses.length; i++) {
-    if (data.delegation_responses[i].delegation.validator_address == validatorAddr) {
+  for (let i = 0; i < data.delegation_responses.length; i += 1) {
+    if (data.delegation_responses[i].delegation.validator_address === validatorAddr) {
       return data.delegation_responses[i];
     }
   }

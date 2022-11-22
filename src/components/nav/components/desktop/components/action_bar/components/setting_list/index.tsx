@@ -16,7 +16,9 @@ import {
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
 import {
-  THEME_LIST, DATE_LIST, TX_LIST,
+  // THEME_LIST, //remove dark theme.
+  DATE_LIST,
+  TX_LIST,
 } from '@recoil/settings';
 import { useSettingList } from './hooks';
 import { useStyles } from './styles';
@@ -132,7 +134,7 @@ const Settings: React.FC<{
                 MenuProps={{
                   MenuListProps: {
                     disablePadding: true,
-                  }
+                  },
                 }}
               >
                 {DATE_LIST
@@ -158,7 +160,7 @@ const Settings: React.FC<{
                 MenuProps={{
                   MenuListProps: {
                     disablePadding: true,
-                  }
+                  },
                 }}
               >
                 {TX_LIST

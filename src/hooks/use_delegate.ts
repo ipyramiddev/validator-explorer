@@ -74,7 +74,12 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     // });
   };
 
-  const requestRedelegate = async (address: string, amount: string, sourceAddr: string, destAddr: string) => {
+  const requestRedelegate = async (
+    address: string,
+    amount: string,
+    sourceAddr: string,
+    destAddr: string,
+  ) => {
     // get sender object using eth address
     const senderObj = await getSenderObj(address, chainConfig.REST_RPC);
     console.log('senderObj: ', senderObj);
@@ -82,7 +87,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     const params = {
       validatorSrcAddress: sourceAddr,
       validatorDstAddress: destAddr,
-      amount: amount,
+      amount,
       denom: chainConfig.DENOM,
     };
 
@@ -98,8 +103,12 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     );
   };
 
-  const requestDelegationInfo = async (address: string, node_addr: string, validatorAddr: string) => {
-    return await getDelegationObject(address, node_addr, validatorAddr);
+  const requestDelegationInfo = async (
+    address: string,
+    nodeAddr: string,
+    validatorAddr: string,
+  ) => {
+    return await getDelegationObject(address, nodeAddr, validatorAddr);
   };
 
   return {

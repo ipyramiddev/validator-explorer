@@ -43,9 +43,7 @@ const Desktop: React.FC<{
     getRowHeight,
   } = useGrid(columns);
   const allValidators = [];
-  props.items.map((x, i) => {
-    allValidators.push(x.validator.address);
-  })
+  props.items.map((x) => allValidators.push(x.validator.address));
   const formattedItems = props.items.map((x, i) => {
     const status = getValidatorStatus(x.status, x.jailed, x.tombstoned);
     const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
