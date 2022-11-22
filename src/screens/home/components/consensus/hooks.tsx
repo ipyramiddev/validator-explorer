@@ -64,7 +64,7 @@ export const useConsensus = () => {
     };
 
     client.onclose = () => {
-      console.log('closing socket');
+      // console.log('closing socket');
     };
 
     return () => {
@@ -72,7 +72,7 @@ export const useConsensus = () => {
     };
   }, []);
 
-  const formatNewRound = (data:any) => {
+  const formatNewRound = (data: any) => {
     const height = numeral(R.pathOr('', ['result', 'data', 'value', 'height'], data)).value();
     const proposerHex = R.pathOr('', ['result', 'data', 'value', 'proposer', 'address'], data);
     const consensusAddress = hexToBech32(proposerHex, chainConfig.prefix.consensus);
@@ -84,7 +84,7 @@ export const useConsensus = () => {
     }));
   };
 
-  const formatNewStep = (data:any) => {
+  const formatNewStep = (data: any) => {
     const stepReference = {
       0: 0,
       RoundStepNewHeight: 1,

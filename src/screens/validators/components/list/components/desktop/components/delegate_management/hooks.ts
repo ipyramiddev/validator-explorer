@@ -37,16 +37,14 @@ export const useDelegateManagement = (validatorAddr: string) => {
 
   const handleDelegate = async (address: string) => {
     if (!amount) return;
-    const res = await requestDelegate(address, (amount * (10 ** 18))
+    await requestDelegate(address, (amount * (10 ** 18))
       .toString());
-    console.log(res);
     setOpen(false);
   };
 
   const handleUndelegate = async (address: string) => {
     if (!amount) return;
-    const res = await requestUndelegate(address, (amount * (10 ** 18)).toString());
-    console.log(res);
+    await requestUndelegate(address, (amount * (10 ** 18)).toString());
     setOpen(false);
   };
 
@@ -58,25 +56,25 @@ export const useDelegateManagement = (validatorAddr: string) => {
       return;
     }
     if (!amount) {
-      alert('Please set amount to redelegate.');
+      // alert('Please set amount to redelegate.');
       return;
     }
-    const res = await requestRedelegate(
+    await requestRedelegate(
       address,
       (amount * (10 ** 18)).toString(),
       sourceAddr,
       destAddr,
     );
-    console.log(res);
     setOpen(false);
   };
 
   const handleClaimReward = () => {
-    alert(`Claimed: ${validatorAddr}, Amount: ${amount}`);
+    // alert(`Claimed: ${validatorAddr}, Amount: ${amount}`);
   };
 
   const getDelegationInfo = async (address: string, valiAddr: string) => {
-    return await requestDelegationInfo(address, generalConfig.chain.REST_RPC, valiAddr);
+    const res = await requestDelegationInfo(address, generalConfig.chain.REST_RPC, valiAddr);
+    return res;
   };
 
   return {

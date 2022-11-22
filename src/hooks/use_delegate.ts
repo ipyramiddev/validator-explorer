@@ -34,7 +34,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     // Create message to delegate
     const msg = createTxMsgDelegate(chain, senderObj, delegateFee, '', params);
 
-    return await signAndBroadcastTxMsg(
+    await signAndBroadcastTxMsg(
       msg,
       senderObj,
       chain,
@@ -60,7 +60,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     // Create message to delegate
     const msg = createTxMsgUndelegate(chain, senderObj, delegateFee, '', params);
 
-    return await signAndBroadcastTxMsg(
+    await signAndBroadcastTxMsg(
       msg,
       senderObj,
       chain,
@@ -82,7 +82,6 @@ export const useDelegate = (validator: string, chainConfig: any) => {
   ) => {
     // get sender object using eth address
     const senderObj = await getSenderObj(address, chainConfig.REST_RPC);
-    console.log('senderObj: ', senderObj);
 
     const params = {
       validatorSrcAddress: sourceAddr,
@@ -93,8 +92,8 @@ export const useDelegate = (validator: string, chainConfig: any) => {
 
     // create the msg to delegate
     const msg = createTxMsgBeginRedelegate(chain, senderObj, delegateFee, '', params);
-    console.log('msg: ', msg);
-    return await signAndBroadcastTxMsg(
+
+    await signAndBroadcastTxMsg(
       msg,
       senderObj,
       chain,
@@ -108,7 +107,8 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     nodeAddr: string,
     validatorAddr: string,
   ) => {
-    return await getDelegationObject(address, nodeAddr, validatorAddr);
+    const res = await getDelegationObject(address, nodeAddr, validatorAddr);
+    return res;
   };
 
   return {
