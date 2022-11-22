@@ -16,7 +16,9 @@ import {
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
 import {
-  THEME_LIST, DATE_LIST, TX_LIST,
+  // THEME_LIST, //remove dark theme.
+  DATE_LIST,
+  TX_LIST,
 } from '@recoil/settings';
 import { useSettingList } from './hooks';
 import { useStyles } from './styles';
@@ -73,7 +75,7 @@ const Settings: React.FC<{
         </DialogTitle>
         <DialogContent dividers>
           <form onSubmit={handleFormSubmit}>
-            <div className={classes.formItem}>
+            {/* <div className={classes.formItem}>
               <Typography className="form-item--label">
                 {t('theme')}
               </Typography>
@@ -95,7 +97,7 @@ const Settings: React.FC<{
                     </MenuItem>
                   ))}
               </Select>
-            </div>
+            </div> */}
 
             {/* <div className={classes.formItem}>
               <Typography className="form-item--label">
@@ -129,9 +131,11 @@ const Settings: React.FC<{
                 variant="outlined"
                 value={state.dateFormat}
                 onChange={(e) => handleChange('dateFormat', e?.target?.value)}
-                MenuProps={{ MenuListProps: {
-                  disablePadding: true,
-                } }}
+                MenuProps={{
+                  MenuListProps: {
+                    disablePadding: true,
+                  },
+                }}
               >
                 {DATE_LIST
                   .map((l) => (
@@ -153,9 +157,11 @@ const Settings: React.FC<{
                 variant="outlined"
                 value={state.txListFormat}
                 onChange={(e) => handleChange('txListFormat', e?.target?.value)}
-                MenuProps={{ MenuListProps: {
-                  disablePadding: true,
-                } }}
+                MenuProps={{
+                  MenuListProps: {
+                    disablePadding: true,
+                  },
+                }}
               >
                 {TX_LIST
                   .map((l) => (

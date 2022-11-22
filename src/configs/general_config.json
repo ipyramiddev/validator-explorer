@@ -11,10 +11,10 @@
   "chain": {
     "CHAINID": 9000,
     "NAME": "cascadia_9000-1",
-    "TOKEN": "casca",
+    "TOKEN": "CC",
     "RPC": "https://devnet.cascadia.foundation",
     "REST_RPC": "https://devnet.cascadia.foundation:1317",
-    "DENOM": "acascadia",
+    "DENOM": "uCC",
     "EXPLORER": ""
   }
 }

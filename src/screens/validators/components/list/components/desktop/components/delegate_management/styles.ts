@@ -28,6 +28,7 @@ export const useStyles = () => {
           },
         },
         formItem: {
+          paddingTop: '10px',
           '& .form-label': {
             fontWeight: 600,
           },
@@ -39,6 +40,16 @@ export const useStyles = () => {
               opacity: 0.5,
             },
           },
+        },
+        redelegateButton: {
+          color: '#e7ac06',
+        },
+        claimButton: {
+          color: '#098735',
+        },
+        buttonGroup: {
+          padding: '10px',
+          display: 'flex',
         },
       });
     },

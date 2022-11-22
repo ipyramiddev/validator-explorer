@@ -78,7 +78,9 @@
       "varsIgnorePattern": "^_",
       "argsIgnorePattern": "^_"
     }],
-    "no-param-reassign": "warn",
+    "no-param-reassign": ["off", { "props": false }],
+    "no-console": ["warn", {"allow": ["warn", "error"]}],
+    "no-alert": ["off"],
     "no-restricted-globals": "warn",
     "react/prop-types": "off",
     "jsx-a11y/interactive-supports-focus": "off",
