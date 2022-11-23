@@ -6,21 +6,13 @@ export const useStyles = () => {
     (theme) => {
       return ({
         root: {
-          background: '#003264',
-          padding: theme.spacing(6),
-          paddingBottom: theme.spacing(0),
-          color: '#FFFFFF',
-          fontSize: '1rem',
-          '& .logo-text': {
-            fontSize: '1.5rem',
-          },
+          background: theme.palette.background.paper,
+          padding: theme.spacing(6, 3, 0),
+          color: theme.palette.custom.fonts.fontOne,
           '& .footer__closing--container': {
             '& a': {
               color: theme.palette.custom.fonts.highlight,
             },
-          },
-          '& .MuiDivider-root': {
-            margin: theme.spacing(4, 0),
           },
           '& p': {
             marginTop: theme.spacing(2),
@@ -28,10 +20,8 @@ export const useStyles = () => {
           },
           '& .footer__logo--container': {
             '& p': {
-              marginTop: 0,
-              marginBottom: theme.spacing(2),
-              fontWeight: 400,
-              fontFamily: 'Montserrat',
+              marginTop: theme.spacing(1),
+              marginBottom: 0,
             },
           },
           '& .footer__logo': {
@@ -44,7 +34,7 @@ export const useStyles = () => {
             marginTop: '1rem',
           },
           '& h3': {
-            color: '#FFFFFF',
+            color: theme.palette.custom.fonts.fontThree,
             fontWeight: 500,
             marginBottom: theme.spacing(2),
             marginTop: theme.spacing(2),
@@ -55,7 +45,7 @@ export const useStyles = () => {
             alignItems: 'flex-start',
             '& a': {
               margin: '0.5rem 0',
-              color: '#B0B3B8',
+              color: 'inherit',
               textDecoration: 'none',
               paddingBottom: '1rem',
               borderBottom: `solid 1px ${theme.palette.custom.fonts.fontFour}`,
@@ -74,7 +64,7 @@ export const useStyles = () => {
             '&.media': {
               display: 'none',
             },
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
               '& a': {
                 borderBottom: 'none',
                 padding: 0,
@@ -85,66 +75,35 @@ export const useStyles = () => {
               },
             },
           },
-          '& .footer__privacy': {
-            display: 'flex',
-            '& a': {
-              color: '#B0B3B8',
-              paddingRight: theme.spacing(2),
-            },
-            paddingBottom: theme.spacing(2),
-          },
-          // [theme.breakpoints.up('md')]: {
-          //   '& .MuiDivider-root': {
-          //     marginBottom: 0,
-          //   },
-          //   '& .footer__closing--container': {
-          //     display: 'flex',
-          //     alignItems: 'center',
-          //     justifyContent: 'space-between',
-          //     padding: theme.spacing(1, 0),
-          //   },
-          // },
-          [theme.breakpoints.down('md')]: {
-            padding: theme.spacing(8, 3),
-            paddingBottom: 0,
-            '& .desktop-footer': {
-              display: 'none',
-            },
-            '& .mobile-footer': {
-              display: 'block',
-            },
-            '& .mobile-logo': {
-              fontSize: '1.5rem',
-              fontFamily: 'Montserrat',
-              fontWeight: 400,
-              paddingBottom: theme.spacing(4),
-            },
-          },
           [theme.breakpoints.up('md')]: {
-            '& .desktop-footer': {
-              display: 'block',
+            paddingBottom: 0,
+            '& .MuiDivider-root': {
+              marginBottom: 0,
             },
-            '& .mobile-footer': {
-              display: 'none',
+            '& .footer__closing--container': {
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: theme.spacing(1, 0),
             },
+          },
+          [theme.breakpoints.up('lg')]: {
             '& .MuiDivider-root': {
               marginTop: theme.spacing(5),
             },
             '& .footer': {
               display: 'grid',
-              gridTemplateColumns: 'repeat(5, 1fr)',
-              paddingBottom: theme.spacing(10),
+              gridTemplateColumns: 'repeat(4, 1fr)',
             },
             '& .footer__links': {
-              gridColumn: '2/6',
+              gridColumn: '2/5',
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
+              gridTemplateColumns: 'repeat(3, 1fr)',
               marginTop: 0,
             },
             '& h3': {
-              fontSize: '1rem',
+              fontSize: '1.125rem',
               marginTop: 0,
-              fontWeight: '600',
             },
             '& .footer__social': {
               justifyContent: 'flex-end',
