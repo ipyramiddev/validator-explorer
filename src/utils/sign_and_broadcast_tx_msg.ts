@@ -3,10 +3,12 @@ import {
   generateEndpointGetDelegations,
   generateEndpointBroadcast,
   generatePostBodyBroadcast,
+  generateEndpointDistributionRewardsByAddress,
 } from '@tharsis/provider';
 import {
   createTxRawEIP712,
   signatureToWeb3Extension,
+  createTxMsgMultipleWithdrawDelegatorReward,
 } from '@tharsis/transactions';
 import { signatureToPubkey } from '@hanchon/signature-to-pubkey';
 import { ethers } from 'ethers';
@@ -80,6 +82,19 @@ export async function getDelegationObject(
   }
 }
 
+export async function getRewardObject(
+  addr: string,
+  nodeAddr: string,
+  validatorAddr: string,
+) {
+  const accountCascadia = await ethToCascadia(addr, nodeAddr);
+  const endPointAccount = generateEndpointDistributionRewardsByAddress(accountCascadia ?? '');
+  const { data } = await axios.get(
+    `${nodeAddr}${endPointAccount}/${validatorAddr}`,
+  );
+  return data.rewards[0].amount;
+}
+
 export async function signAndBroadcastTxMsg(
   msg: any,
   senderObj: any,
@@ -112,6 +127,41 @@ export async function signAndBroadcastTxMsg(
   //   postOptions
   // );
   // return await broadcastPost.json();
+}
+
+export async function txClaimRewards(
+  account,
+  nodeAddressIP,
+  fee,
+  chain,
+  memo,
+  valiAddr,
+) {
+  const validators = [];
+  validators.push(valiAddr);
+  const params = {
+    validatorAddresses: validators,
+  };
+
+  // get sender object using eth address
+  const senderObj = await getSenderObj(account, nodeAddressIP);
+
+  // create the msg to delegate
+  const msg = createTxMsgMultipleWithdrawDelegatorReward(
+    chain,
+    senderObj,
+    fee,
+    memo,
+    params,
+  );
+  const res = await signAndBroadcastTxMsg(
+    msg,
+    senderObj,
+    chain,
+    nodeAddressIP,
+    account,
+  );
+  return res;
 }
 
 async function reformatSender(addressData: any) {

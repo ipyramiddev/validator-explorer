@@ -7,6 +7,8 @@ import {
   getSenderObj,
   signAndBroadcastTxMsg,
   getDelegationObject,
+  getRewardObject,
+  txClaimRewards,
 } from '@utils/sign_and_broadcast_tx_msg';
 
 export const useDelegate = (validator: string, chainConfig: any) => {
@@ -102,6 +104,17 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     );
   };
 
+  const requestClaimReward = async (address, valiAddr) => {
+    await txClaimRewards(
+      address ?? '',
+      chainConfig.REST_RPC,
+      delegateFee,
+      chain,
+      '',
+      valiAddr,
+    );
+  };
+
   const requestDelegationInfo = async (
     address: string,
     nodeAddr: string,
@@ -111,10 +124,21 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     return res;
   };
 
+  const requestRewardInfo = async (
+    address: string,
+    nodeAddr: string,
+    validatorAddr: string,
+  ) => {
+    const res = await getRewardObject(address, nodeAddr, validatorAddr);
+    return res;
+  };
+
   return {
     requestDelegate,
     requestUndelegate,
     requestRedelegate,
     requestDelegationInfo,
+    requestRewardInfo,
+    requestClaimReward,
   };
 };
