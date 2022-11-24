@@ -33,7 +33,12 @@ export const useWallet = () => {
     }
   };
 
+  const disconnectWallet = async () => {
+    window.localStorage.removeItem('address');
+  };
+
   return {
     connectWallet,
+    disconnectWallet,
   };
 };

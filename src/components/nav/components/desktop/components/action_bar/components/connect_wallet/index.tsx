@@ -11,22 +11,36 @@ const ConnectWallet: React.FC<{
 }> = (props) => {
   const { t } = useTranslation('common');
   const { address } = useRecoilValue(atomState);
-  const { connectWallet } = useWallet();
+  const {
+    connectWallet, disconnectWallet,
+  } = useWallet();
 
   return (
     <div className={classnames(props.className)}>
-      <Button
-        variant="outlined"
-        disabled={!!address}
-        onClick={() => connectWallet()}
-      >
-        {
-          (
-            address
-            && `${address.slice(0, 6)}...${address.slice(address.length - 6)}`
-          ) || t('connectWallet')
-        }
-      </Button>
+      {address == null ? (
+        <Button
+          variant="outlined"
+          disabled={!!address}
+          onClick={() => connectWallet()}
+        >
+          {
+            (
+              address
+              && `${address.slice(0, 6)}...${address.slice(address.length - 6)}`
+            ) || t('connectWallet')
+          }
+        </Button>
+      ) : (
+        <Button
+          variant="outlined"
+          onClick={() => {
+            disconnectWallet();
+            window.location.reload();
+          }}
+        >
+          disconnect
+        </Button>
+      )}
     </div>
   );
 };
