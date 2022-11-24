@@ -38,7 +38,7 @@ const ConnectWallet: React.FC<{
             window.location.reload();
           }}
         >
-          disconnect
+          {`${address.slice(0, 6)}...${address.slice(address.length - 6)}`}
         </Button>
       )}
     </div>
