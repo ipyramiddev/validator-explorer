@@ -13,7 +13,7 @@ import {
 import { signatureToPubkey } from '@hanchon/signature-to-pubkey';
 import { ethers } from 'ethers';
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 /**
  * Convert an eth address to cascadia address
  * @param {string} addr eth address to be converted
@@ -74,12 +74,12 @@ export async function getDelegationObject(
   const { data } = await axios.get(
     nodeAddr + endPointAccount,
   );
-  // return data.delegation_responses[0].delegation;
   for (let i = 0; i < data.delegation_responses.length; i += 1) {
     if (data.delegation_responses[i].delegation.validator_address === validatorAddr) {
       return data.delegation_responses[i];
     }
   }
+  return 0;
 }
 
 export async function getRewardObject(
@@ -114,7 +114,7 @@ export async function signAndBroadcastTxMsg(
     nodeAddress + generateEndpointBroadcast(),
     generatePostBodyBroadcast(raw),
   );
-
+  toast.success('Success');
   return data;
 
   // const postOptions = {
@@ -127,6 +127,39 @@ export async function signAndBroadcastTxMsg(
   //   postOptions
   // );
   // return await broadcastPost.json();
+}
+export async function txClaimAll(
+  account,
+  nodeAddressIP,
+  fee,
+  chain,
+  memo,
+  allValidators,
+) {
+  const params = {
+    validatorAddresses: allValidators,
+  };
+
+  // get sender object using eth address
+  const senderObj = await getSenderObj(account, nodeAddressIP);
+
+  // create the msg to delegate
+  const msg = createTxMsgMultipleWithdrawDelegatorReward(
+    chain,
+    senderObj,
+    fee,
+    memo,
+    params,
+  );
+  const res = await signAndBroadcastTxMsg(
+    msg,
+    senderObj,
+    chain,
+    nodeAddressIP,
+    account,
+  );
+  toast.success('Success');
+  return res;
 }
 
 export async function txClaimRewards(
@@ -161,6 +194,7 @@ export async function txClaimRewards(
     nodeAddressIP,
     account,
   );
+  toast.success('Success');
   return res;
 }
 

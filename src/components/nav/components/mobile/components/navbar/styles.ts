@@ -6,7 +6,7 @@ export const useStyles = () => {
       return ({
         root: {
           display: 'flex',
-          alignItems: 'flex-start',
+          alignItems: 'center',
           justifyContent: 'space-between',
           padding: theme.spacing(3, 2, 0),
         },
@@ -44,6 +44,7 @@ export const useStyles = () => {
           },
         },
         hamburger: {
+          marginLeft: '5px',
           zIndex: 200,
           width: '20px',
           '&:hover': {

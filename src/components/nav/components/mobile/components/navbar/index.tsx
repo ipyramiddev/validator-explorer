@@ -1,23 +1,24 @@
 import React from 'react';
 import classnames from 'classnames';
 import Link from 'next/link';
-import { ExpandMore } from '@material-ui/icons';
+// import { ExpandMore } from '@material-ui/icons';
 import { useRecoilValue } from 'recoil';
-import { readSelectedNetwork } from '@recoil/big_dipper_networks';
+// import { readSelectedNetwork } from '@recoil/big_dipper_networks';
 import CascadiaLogoDark from '@assets/cascadia-dark.svg';
 import CascadiaLogoLight from '@assets/cascadia-light.svg';
 import { HOME } from '@utils/go_to_page';
 import { readTheme } from '@recoil/settings';
+import { ConnectWallet } from '/src/components/nav/components/desktop/components/action_bar/components';
 import { useStyles } from './styles';
 import { NavbarProps } from './types';
 
 const Navbar = (props:NavbarProps) => {
   const classes = useStyles();
   const theme = useRecoilValue(readTheme);
-  const selected = useRecoilValue(readSelectedNetwork);
+  // const selected = useRecoilValue(readSelectedNetwork);
   const {
     isOpen,
-    openNetwork,
+    // openNetwork,
     toggleNavMenus,
   } = props;
 
@@ -36,7 +37,7 @@ const Navbar = (props:NavbarProps) => {
         {/* =================================== */}
         {/* Network */}
         {/* =================================== */}
-        <div
+        {/* <div
           className={classes.network}
           onClick={openNetwork}
           role="button"
@@ -45,7 +46,8 @@ const Navbar = (props:NavbarProps) => {
             {selected}
           </p>
           <ExpandMore fontSize="small" />
-        </div>
+        </div> */}
+        <ConnectWallet />
         {/* =================================== */}
         {/* Hamburger */}
         {/* =================================== */}

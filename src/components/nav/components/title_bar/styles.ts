@@ -31,6 +31,15 @@ export const useStyles = () => {
           },
           // width: '225px',
         },
+        title: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+          [theme.breakpoints.up('lg')]: {
+            width: '28%',
+          },
+        },
         content: {
           width: '100%',
           background: theme.palette.custom.general.surfaceOne,

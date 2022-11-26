@@ -16,12 +16,14 @@ const SingleValidator: React.FC<{
     status: string;
     theme: string;
   };
+  action: React.ReactNode;
 }> = ({
   className,
   validator,
   commission,
   votingPower,
   status,
+  action,
 }) => {
   const { t } = useTranslation('validators');
   const classes = useStyles();
@@ -32,6 +34,9 @@ const SingleValidator: React.FC<{
           {t('validator')}
         </Typography>
         {validator}
+      </div>
+      <div className={classes.item}>
+        {action}
       </div>
       <div className={classes.item}>
         <Typography variant="h4" className="label">
