@@ -13,7 +13,7 @@ import {
 import { signatureToPubkey } from '@hanchon/signature-to-pubkey';
 import { ethers } from 'ethers';
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 /**
  * Convert an eth address to cascadia address
  * @param {string} addr eth address to be converted
@@ -114,7 +114,7 @@ export async function signAndBroadcastTxMsg(
     nodeAddress + generateEndpointBroadcast(),
     generatePostBodyBroadcast(raw),
   );
-
+  toast.success('Success');
   return data;
 
   // const postOptions = {
@@ -158,6 +158,7 @@ export async function txClaimAll(
     nodeAddressIP,
     account,
   );
+  toast.success('Success');
   return res;
 }
 
@@ -193,6 +194,7 @@ export async function txClaimRewards(
     nodeAddressIP,
     account,
   );
+  toast.success('Success');
   return res;
 }
 

@@ -9,7 +9,9 @@ import useTranslation from 'next-translate/useTranslation';
 import {
   Typography, Button,
 } from '@material-ui/core';
-import { chainConfig } from '@configs';
+import {
+  chainConfig, generalConfig,
+} from '@configs';
 import { readTheme } from '@recoil/settings';
 import {
   useProfilesRecoil,
@@ -17,12 +19,10 @@ import {
 import {
   readAddress,
 } from '@recoil/wallet';
+import { useDelegate } from '@hooks';
 import { useStyles } from './styles';
 import { formatMarket } from './utils';
-
 import { useValidators } from './hooks';
-import { useDelegate } from '@hooks';
-import { generalConfig } from '@src/configs';
 
 const TitleBar:React.FC<{
   className?: string;
