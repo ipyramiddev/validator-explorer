@@ -11,6 +11,7 @@ import {
   useListRow,
 } from '@hooks';
 import { getValidatorStatus } from '@utils/get_validator_status';
+import { DelegateManagement } from 'src/screens/validators/components/list/components/desktop/components';
 import { SingleValidator } from './component';
 import {
   Condition, VotingPower,
@@ -29,6 +30,8 @@ const Mobile: React.FC<{
     setRowHeight,
   } = useList();
 
+  const allValidators = [];
+  items.map((x) => allValidators.push(x.validator.address));
   const formattedItems = items.map((x, i) => {
     const status = getValidatorStatus(x.status, x.jailed, x.tombstoned);
     const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
@@ -56,6 +59,9 @@ const Mobile: React.FC<{
         />
       ),
       status,
+      action: (
+        <DelegateManagement allValidators={allValidators} validator={x.validator.address} />
+      ),
     });
   });
 

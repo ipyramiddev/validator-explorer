@@ -28,8 +28,9 @@ const DelegateManagement: React.FC<{
   const { t } = useTranslation('validators');
   const address = useRecoilValue(readAddress);
   const balance = useRecoilValue(readBalance);
-  const [delegationAmount, setDelegationAmount] = useState<string>('');
-  const [rewardAmount, setRewardAmount] = useState<string>('');
+  const [isDelegated, setIsDelegated] = useState<boolean>(false);
+  const [delegationAmount, setDelegationAmount] = useState<string>('0');
+  const [rewardAmount, setRewardAmount] = useState<string>('0');
   const [newValidator, setNewValidator] = useState<string>('');
   const {
     open,
@@ -48,14 +49,23 @@ const DelegateManagement: React.FC<{
   } = useDelegateManagement(props.validator);
   const handleDelegationAmount = (metamaskAddress: string, validatorAddr: string) => {
     getDelegationInfo(metamaskAddress, validatorAddr).then((res) => {
-      setDelegationAmount(res.balance.amount);
+      if (res === 0) {
+        setIsDelegated(false);
+      } else {
+        setIsDelegated(true);
+        setDelegationAmount(res.balance.amount);
+      }
     });
   };
 
   const handleRewardAmount = (metamaskAddress: string, validatorAddr: string) => {
-    getRewardInfo(metamaskAddress, validatorAddr).then((res) => {
-      setRewardAmount(res);
-    });
+    if (isDelegated === true) {
+      getRewardInfo(metamaskAddress, validatorAddr).then((res) => {
+        setRewardAmount(res);
+      });
+    } else {
+      setRewardAmount('0');
+    }
   };
 
   const classes = useStyles();
@@ -130,31 +140,46 @@ const DelegateManagement: React.FC<{
     button = (
       <>
         <div className={classnames(classes.buttonGroup)}>
-          <Button
-            color="primary"
-            disabled={!(balance && parseInt(balance, 10) > 0)}
-            onClick={() => handleChangeStatus('delegate')}
-          >
-            Delegate
-          </Button>
-          <Button
-            onClick={() => handleChangeStatus('redelegate')}
-            className={classnames(classes.redelegateButton)}
-          >
-            Redelegate
-          </Button>
-          <Button
-            color="secondary"
-            onClick={() => handleChangeStatus('undelegate')}
-          >
-            Undelegate
-          </Button>
-          <Button
-            onClick={() => handleChangeStatus('claimReward')}
-            className={classnames(classes.claimButton)}
-          >
-            Claim Reward
-          </Button>
+          <div>
+            <div>
+              <Button
+                color="primary"
+                disabled={!(balance && parseInt(balance, 10) > 0)}
+                onClick={() => handleChangeStatus('delegate')}
+              >
+                Delegate
+              </Button>
+            </div>
+            <div>
+              <Button
+                onClick={() => handleChangeStatus('redelegate')}
+                className={classnames(classes.redelegateButton)}
+                disabled={!(parseInt(delegationAmount, 10) > 0)}
+              >
+                Redelegate
+              </Button>
+            </div>
+          </div>
+          <div>
+            <div>
+              <Button
+                color="secondary"
+                onClick={() => handleChangeStatus('undelegate')}
+                disabled={!(parseInt(delegationAmount, 10) > 0)}
+              >
+                Undelegate
+              </Button>
+            </div>
+            <div>
+              <Button
+                onClick={() => handleChangeStatus('claimReward')}
+                className={classnames(classes.claimButton)}
+                disabled={!(parseInt(rewardAmount, 10) > 0)}
+              >
+                Claim Reward
+              </Button>
+            </div>
+          </div>
         </div>
       </>
     );
@@ -168,6 +193,7 @@ const DelegateManagement: React.FC<{
         onClick={() => {
           handleOpen();
           handleDelegationAmount(address, props.validator);
+
           handleRewardAmount(address, props.validator);
         }}
       >
@@ -198,7 +224,7 @@ const DelegateManagement: React.FC<{
             <Typography className="value">
               {`${balance && parseInt(balance, 10) > 0
                 ? (parseInt(balance, 10) / (10 ** 18)).toPrecision(4)
-                : 0} CASCADIA`}
+                : 0} CC`}
             </Typography>
           </div>
           {status !== null && (
@@ -210,7 +236,7 @@ const DelegateManagement: React.FC<{
                 <Typography className="value">
                   {`${delegationAmount && parseInt(delegationAmount, 10) > 0
                     ? (parseInt(delegationAmount, 10) / (10 ** 18)).toPrecision(4)
-                    : 0} CASCADIA`}
+                    : 0} CC`}
                 </Typography>
               </div>
               {status === 'redelegate' && (
@@ -254,7 +280,7 @@ const DelegateManagement: React.FC<{
                       value={amount}
                       onChange={handleChangeAmount}
                       endAdornment={(
-                        <Typography>CASCADIA</Typography>
+                        <Typography>CC</Typography>
                       )}
                     />
                   </div>
@@ -276,7 +302,7 @@ const DelegateManagement: React.FC<{
                     <Typography className="value">
                       {`${rewardAmount && parseInt(rewardAmount, 10) > 0
                         ? (parseInt(rewardAmount, 10) / (10 ** 18)).toPrecision(4)
-                        : 0} CASCADIA`}
+                        : 0} CC`}
                     </Typography>
                   </div>
                 </>

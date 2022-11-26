@@ -70,6 +70,7 @@ export const useDelegateManagement = (validatorAddr: string) => {
 
   const handleClaimReward = async (address:string, valiAddr:string) => {
     await requestClaimReward(address, valiAddr);
+    setOpen(false);
   };
 
   const getDelegationInfo = async (address: string, valiAddr: string) => {

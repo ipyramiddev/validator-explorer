@@ -9,6 +9,7 @@ import {
   getDelegationObject,
   getRewardObject,
   txClaimRewards,
+  txClaimAll,
 } from '@utils/sign_and_broadcast_tx_msg';
 
 export const useDelegate = (validator: string, chainConfig: any) => {
@@ -16,7 +17,25 @@ export const useDelegate = (validator: string, chainConfig: any) => {
   const delegateFee = {
     amount: '80000000000000000',
     denom: chainConfig.DENOM,
+    gas: '300000',
+  };
+
+  const undelegateFee = {
+    amount: '80000000000000000',
+    denom: chainConfig.DENOM,
+    gas: '300000',
+  };
+
+  const redelegateFee = {
+    amount: '80000000000000000',
+    denom: chainConfig.DENOM,
     gas: '400000',
+  };
+
+  const claimRewardFee = {
+    amount: '80000000000000000',
+    denom: chainConfig.DENOM,
+    gas: '300000',
   };
 
   const chain = {
@@ -26,7 +45,6 @@ export const useDelegate = (validator: string, chainConfig: any) => {
 
   const requestDelegate = async (address: string, amount: string) => {
     const senderObj: any = await getSenderObj(address, chainConfig.REST_RPC);
-
     const params = {
       validatorAddress: validator,
       amount,
@@ -35,7 +53,6 @@ export const useDelegate = (validator: string, chainConfig: any) => {
 
     // Create message to delegate
     const msg = createTxMsgDelegate(chain, senderObj, delegateFee, '', params);
-
     await signAndBroadcastTxMsg(
       msg,
       senderObj,
@@ -60,8 +77,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     };
 
     // Create message to delegate
-    const msg = createTxMsgUndelegate(chain, senderObj, delegateFee, '', params);
-
+    const msg = createTxMsgUndelegate(chain, senderObj, undelegateFee, '', params);
     await signAndBroadcastTxMsg(
       msg,
       senderObj,
@@ -93,7 +109,7 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     };
 
     // create the msg to delegate
-    const msg = createTxMsgBeginRedelegate(chain, senderObj, delegateFee, '', params);
+    const msg = createTxMsgBeginRedelegate(chain, senderObj, redelegateFee, '', params);
 
     await signAndBroadcastTxMsg(
       msg,
@@ -104,11 +120,11 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     );
   };
 
-  const requestClaimReward = async (address, valiAddr) => {
+  const requestClaimReward = async (address: string, valiAddr: string) => {
     await txClaimRewards(
       address ?? '',
       chainConfig.REST_RPC,
-      delegateFee,
+      claimRewardFee,
       chain,
       '',
       valiAddr,
@@ -133,6 +149,20 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     return res;
   };
 
+  const requestClaimAll = async (
+    address: string,
+    allValidators: Array<string>,
+  ) => {
+    await txClaimAll(
+      address ?? '',
+      chainConfig.REST_RPC,
+      claimRewardFee,
+      chain,
+      '',
+      allValidators,
+    );
+  };
+
   return {
     requestDelegate,
     requestUndelegate,
@@ -140,5 +170,6 @@ export const useDelegate = (validator: string, chainConfig: any) => {
     requestDelegationInfo,
     requestRewardInfo,
     requestClaimReward,
+    requestClaimAll,
   };
 };
