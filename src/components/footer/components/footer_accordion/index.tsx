@@ -86,7 +86,9 @@ const FooterAccordion = () => {
   const { t } = useTranslation();
   const [expanded, setExpanded] = React.useState<number | false>(0);
 
-  const handleChange = (panel: number) => (event: React.ChangeEvent<{}>, newExpanded: boolean) => {
+  const handleChange = (panel: number) => (
+    event: React.ChangeEvent<Record<string, never>>, newExpanded: boolean,
+  ) => {
     setExpanded(newExpanded ? panel : false);
   };
 
