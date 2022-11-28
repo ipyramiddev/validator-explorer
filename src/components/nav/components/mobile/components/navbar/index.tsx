@@ -8,7 +8,7 @@ import CascadiaLogoDark from '@assets/cascadia-dark.svg';
 import CascadiaLogoLight from '@assets/cascadia-light.svg';
 import { HOME } from '@utils/go_to_page';
 import { readTheme } from '@recoil/settings';
-import { ConnectWallet } from '/src/components/nav/components/desktop/components/action_bar/components';
+import { ConnectWallet } from 'src/components/nav/components/desktop/components/action_bar/components';
 import { useStyles } from './styles';
 import { NavbarProps } from './types';
 
