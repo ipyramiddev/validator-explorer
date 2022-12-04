@@ -13,17 +13,17 @@ export const columns:{
   },
   {
     key: 'messages',
-    align: 'right',
+    align: 'center',
     width: 15,
   },
   {
     key: 'result',
-    align: 'right',
+    align: 'left',
     width: 20,
   },
   {
     key: 'time',
-    align: 'right',
+    align: 'left',
     width: 20,
   },
 ];

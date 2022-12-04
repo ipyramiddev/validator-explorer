@@ -45,16 +45,20 @@ export const useStyles = () => {
           flexDirection: 'column',
           width: '100%',
           color: theme.palette.custom.fonts.fontTwo,
+          '& .info-bar': {
+            marginBottom: '10px',
+          },
           '& > *': {
             display: 'flex',
             alignItems: 'center',
             '& > *': {
-              width: '50%',
+              width: '70%',
             },
           },
           '& .label': {
             color: theme.palette.custom.fonts.fontThree,
             marginBottom: theme.spacing(0.5),
+            width: '30%',
           },
           [theme.breakpoints.up('lg')]: {
             marginBottom: 0,

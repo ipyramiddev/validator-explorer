@@ -5,20 +5,20 @@ export const useStyles = () => {
     (theme) => {
       return ({
         root: {
-          padding: theme.spacing(2),
+          padding: theme.spacing(4),
           background: theme.palette.primary.main,
           borderRadius: theme.shape.borderRadius,
-          height: '110px',
+          height: '80px',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
+          flexDirection: 'row',
+          alignItems: 'center',
           justifyContent: 'space-between',
           color: theme.palette.custom.fonts.fontFive,
           '& .label': {
-            marginBottom: theme.spacing(2),
+            fontSize: '18px',
           },
           '& .content': {
-            width: '100%',
+            // width: '100%',
             display: 'flex',
             alignItems: 'flex-end',
             justifyContent: 'space-between',

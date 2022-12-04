@@ -44,17 +44,17 @@ const Consensus: React.FC<{
         {t('consensus')}
       </Typography>
       <div className={classes.info}>
-        <div>
+        <div className="info-bar">
           <Typography variant="caption" className="label" component="div">
             {t('height')}
           </Typography>
-          <Typography variant="caption" className="label" component="div">
-            {t('proposer')}
+          <Typography variant="h4">
+            {numeral(state.height).format('0,0')}
           </Typography>
         </div>
         <div>
-          <Typography variant="h4">
-            {numeral(state.height).format('0,0')}
+          <Typography variant="caption" className="label" component="div">
+            {t('proposer')}
           </Typography>
           {state.proposer ? (
             <AvatarName

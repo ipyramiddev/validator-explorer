@@ -45,7 +45,6 @@ const Params = () => {
     title: t('gov'),
     details: formatGov(state.gov, t),
   } : null;
-
   return (
     <>
       <NextSeo
