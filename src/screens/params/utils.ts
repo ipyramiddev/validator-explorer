@@ -122,7 +122,7 @@ export const formatDistribution = (data: Distribution, t: any) => {
     },
     {
       label: t('withdrawAddressEnabled'),
-      detail: `${data.withdrawAddressEnabled}`.toUpperCase(),
+      detail: `${data.withdrawAddressEnabled}`.charAt(0).toUpperCase() + `${data.withdrawAddressEnabled}`.slice(1),
     },
   ]);
 };
@@ -131,7 +131,7 @@ export const formatGov = (data: Gov, t: any) => {
   return ([
     {
       label: t('minDeposit'),
-      detail: `${data.minDeposit.value} ${data.minDeposit.displayDenom.toUpperCase()}`,
+      detail: `${parseInt(data.minDeposit.value, 10).toPrecision(3)} ${data.minDeposit.displayDenom.toUpperCase()}`,
     },
     {
       label: t('maxDepositPeriod'),

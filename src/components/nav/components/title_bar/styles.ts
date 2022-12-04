@@ -24,10 +24,13 @@ export const useStyles = () => {
           },
         },
         logo: {
-          height: '56px',
+          height: '25px',
           margin: 'auto',
           [theme.breakpoints.up('lg')]: {
             margin: 'inherit',
+          },
+          [theme.breakpoints.down('md')]: {
+            display: 'none',
           },
           // width: '225px',
         },
@@ -38,6 +41,9 @@ export const useStyles = () => {
           width: '100%',
           [theme.breakpoints.up('lg')]: {
             width: '28%',
+          },
+          '& .MuiTypography-h1': {
+            fontSize: '20px',
           },
         },
         content: {

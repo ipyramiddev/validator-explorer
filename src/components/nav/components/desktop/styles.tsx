@@ -66,6 +66,9 @@ export const useStyles = () => {
           overflowX: 'hidden',
           width: CLOSED_DRAWER_WIDTH,
         },
+        menu: {
+          paddingTop: '72px',
+        },
       });
     },
   )();

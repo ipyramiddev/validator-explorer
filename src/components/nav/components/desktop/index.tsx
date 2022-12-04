@@ -66,7 +66,7 @@ const Desktop: React.FC<{
             }),
           }}
         >
-          {theme === 'light' ? (
+          {/* {theme === 'light' ? (
             <CascadiaLogoLight
               className={classes.logo}
               onClick={toggleMenu}
@@ -78,8 +78,10 @@ const Desktop: React.FC<{
               onClick={toggleMenu}
               role="button"
             />
-          )}
-          <MenuItems />
+          )} */}
+          <div className={classes.menu}>
+            <MenuItems />
+          </div>
         </Drawer>
       </div>
     </ClickAwayListener>

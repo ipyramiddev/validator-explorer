@@ -38,7 +38,7 @@ export const useStyles = () => {
             color: theme.palette.custom.fonts.fontThree,
           },
           '& .legends__item': {
-            width: '50%',
+            width: '33.333%',
             '&:before': {
               content: '""',
               display: 'inline-block',
@@ -66,6 +66,9 @@ export const useStyles = () => {
           alignItems: 'center',
           justifyContent: 'space-around',
           flexDirection: 'column',
+          '& .MuiTypography-body1': {
+            fontSize: '12px',
+          },
         },
       });
     },

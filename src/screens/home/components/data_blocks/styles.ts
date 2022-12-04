@@ -8,6 +8,7 @@ export const useStyles = () => {
           display: 'grid',
           gridGap: theme.spacing(1),
           gridTemplateRows: 'auto',
+          gridTemplateColumns: 'repeat(1, 1fr)',
           [theme.breakpoints.up('sm')]: {
             gridTemplateColumns: 'repeat(2, 1fr)',
           },
