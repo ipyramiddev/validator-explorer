@@ -40,11 +40,13 @@ const Desktop: React.FC<{
       txs: numeral(x.txs).format('0,0'),
       time: dayjs.utc(x.timestamp).fromNow(),
       proposer: (
-        <AvatarName
-          address={x.proposer.address}
-          imageUrl={x.proposer.imageUrl}
-          name={x.proposer.name}
-        />
+        <div className="proposer-box">
+          <AvatarName
+            address={x.proposer.address}
+            imageUrl={x.proposer.imageUrl}
+            name={x.proposer.name}
+          />
+        </div>
       ),
       hash: getMiddleEllipsis(x.hash, {
         beginning: 6, ending: 5,
@@ -63,6 +65,7 @@ const Desktop: React.FC<{
               <TableCell
                 key={column.key}
                 align={column.align}
+                style={{ width: '30' }}
               >
                 {t(column.key)}
               </TableCell>

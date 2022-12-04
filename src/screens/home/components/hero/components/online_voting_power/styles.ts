@@ -18,7 +18,7 @@ export const useStyles = (percentage: number | string) => {
           '& .primary__data': {
             color: theme.palette.primary.main,
             marginRight: theme.spacing(2),
-            fontSize: '2.5rem',
+            fontSize: '1.5rem',
           },
         },
         chart: {

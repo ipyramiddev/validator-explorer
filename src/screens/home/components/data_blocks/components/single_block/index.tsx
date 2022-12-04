@@ -7,12 +7,12 @@ const SingleBlock: React.FC<{
   className?: string;
   label: string;
   value: string;
-  description?: string;
+  // description?: string;
 }> = ({
   className,
   label,
   value,
-  description,
+  // description,
 }) => {
   const classes = useStyles();
 
@@ -22,14 +22,14 @@ const SingleBlock: React.FC<{
         {label}
       </Typography>
       <div className="content">
-        <Typography variant="h1">
+        <Typography variant="h1" className="label">
           {value}
         </Typography>
-        {!!description && (
+        {/* {!!description && (
           <Typography variant="caption" className="description">
             {description}
           </Typography>
-        )}
+        )} */}
       </div>
     </div>
   );

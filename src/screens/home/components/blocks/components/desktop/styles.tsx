@@ -18,6 +18,9 @@ export const useStyles = () => {
               whiteSpace: 'nowrap',
             },
           },
+          '& .proposer-box': {
+            width: '220px',
+          },
         },
 
       });

@@ -93,8 +93,9 @@ const TitleBar:React.FC<{
           <div key={x.key} className={classes.item}>
             <Typography variant="body1" className="label">
               {t(`common:${x.key}`)}
+              :
             </Typography>
-            <Typography variant="body1">
+            <Typography variant="body1" style={{ color: '#0064C8' }}>
               {x.data}
             </Typography>
           </div>
