@@ -11,6 +11,9 @@ export const useStyles = () => {
           padding: theme.spacing(8, 3, 0),
           color: '#FFFFFF',
           fontSize: '1rem',
+          '& .fill-blue': {
+            fill: '#003264',
+          },
           '& .logo-text': {
             fontSize: '1.5rem',
           },
