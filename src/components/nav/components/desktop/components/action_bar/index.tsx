@@ -8,7 +8,7 @@ import { useStyles } from './styles';
 import {
   // Network,
   NetworkList,
-  SettingsList,
+  // SettingsList,
   ConnectWallet,
 } from './components';
 import { SearchBar } from '../../..';
@@ -42,7 +42,7 @@ const ActionBar: React.FC<{
           toggleNetwork={toggleNetwork}
         /> */}
           <ConnectWallet className={classnames(classes.connectWallet)} />
-          <SettingsList />
+          {/* <SettingsList /> */}
         </div>
         <NetworkList
           actionHeight={height}
