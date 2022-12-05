@@ -6,11 +6,14 @@ export const useStyles = () => {
     (theme) => {
       return ({
         root: {
+          fontFamily: 'Manrope',
           background: '#003264',
-          padding: theme.spacing(6),
-          paddingBottom: theme.spacing(0),
+          padding: theme.spacing(8, 3, 0),
           color: '#FFFFFF',
           fontSize: '1rem',
+          '& .fill-blue': {
+            fill: '#003264',
+          },
           '& .logo-text': {
             fontSize: '1.5rem',
           },
@@ -41,20 +44,22 @@ export const useStyles = () => {
             color: theme.palette.custom.fonts.fontThree,
           },
           '& .footer__links': {
-            marginTop: '1rem',
+            // marginTop: '1rem',
           },
           '& h3': {
             color: '#FFFFFF',
-            fontWeight: 500,
+            fontWeight: 600,
             marginBottom: theme.spacing(2),
-            marginTop: theme.spacing(2),
+            fontFamily: 'Manrope',
+            // marginTop: theme.spacing(2),
           },
           '& .links__group': {
+            fontFamily: 'Manrope',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
             '& a': {
-              margin: '0.5rem 0',
+              margin: '0.125rem 0',
               color: '#B0B3B8',
               textDecoration: 'none',
               paddingBottom: '1rem',
@@ -62,8 +67,11 @@ export const useStyles = () => {
               transition: '0.2s',
               width: '100%',
               '&:hover': {
-                color: Color(theme.palette.custom.fonts.fontOne).alpha(0.6).string(),
+                color: '#FFFFFF',
               },
+            },
+            '& .pointer-disable': {
+              pointerEvents: 'none',
             },
             '&.forbole': {
               '& a:last-child': {
@@ -86,12 +94,13 @@ export const useStyles = () => {
             },
           },
           '& .footer__privacy': {
+            fontFamily: 'Manrope',
             display: 'flex',
             '& a': {
               color: '#B0B3B8',
-              paddingRight: theme.spacing(2),
+              paddingRight: theme.spacing(3),
             },
-            paddingBottom: theme.spacing(2),
+            paddingBottom: theme.spacing(3),
           },
           // [theme.breakpoints.up('md')]: {
           //   '& .MuiDivider-root': {
@@ -104,9 +113,8 @@ export const useStyles = () => {
           //     padding: theme.spacing(1, 0),
           //   },
           // },
-          [theme.breakpoints.down('md')]: {
-            padding: theme.spacing(8, 3),
-            paddingBottom: 0,
+          [theme.breakpoints.down('sm')]: {
+            // padding: theme.spacing(8, 8, 0),
             '& .desktop-footer': {
               display: 'none',
             },
@@ -121,6 +129,7 @@ export const useStyles = () => {
             },
           },
           [theme.breakpoints.up('md')]: {
+            padding: theme.spacing(8, 5, 0),
             '& .desktop-footer': {
               display: 'block',
             },
@@ -149,6 +158,9 @@ export const useStyles = () => {
             '& .footer__social': {
               justifyContent: 'flex-end',
             },
+          },
+          [theme.breakpoints.up('lg')]: {
+            padding: theme.spacing(8, 16, 0),
           },
         },
       });

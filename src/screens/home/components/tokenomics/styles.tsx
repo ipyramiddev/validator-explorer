@@ -13,6 +13,7 @@ export const useStyles = () => {
           flexDirection: 'column',
         },
         label: {
+          fontSize: '18px',
           marginBottom: theme.spacing(2),
         },
         data: {

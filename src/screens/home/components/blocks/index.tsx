@@ -39,7 +39,7 @@ const Blocks:React.FC<{
   return (
     <Box className={classnames(className, classes.root)}>
       <div className={classes.label}>
-        <Typography variant="h2">
+        <Typography variant="h2" className="label">
           {t('latestBlocks')}
         </Typography>
         <Link href={BLOCKS} passHref>

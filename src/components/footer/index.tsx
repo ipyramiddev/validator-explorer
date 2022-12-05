@@ -1,7 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
+
+import ScrollToTop from 'react-scroll-to-top';
+import UpIcon from '../../../public/images/arrow-up.svg';
 import { FooterAccordion } from './components';
+
 import {
   footerLink, footerExternalLink,
 } from './utils';
@@ -40,6 +44,7 @@ const Footer: React.FC<{ className?: string }> = ({ className }) => {
                         href={x.url}
                         target="_blank"
                         rel="noreferrer"
+                        className={x.url !== '' ? 'pointer-enable' : 'pointer-disable'}
                       >
                         {t(`common:${x.key}`)}
                       </a>
@@ -68,6 +73,17 @@ const Footer: React.FC<{ className?: string }> = ({ className }) => {
           <FooterAccordion />
         </div>
       </div>
+
+      <ScrollToTop
+        smooth
+        component={(
+          <div className="p-3">
+            <UpIcon className="fill-blue" />
+          </div>
+        )}
+        width="50px"
+      />
+
     </div>
   );
 };

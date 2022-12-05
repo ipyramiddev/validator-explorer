@@ -12,6 +12,22 @@ export const useStyles = () => {
           alignItems: 'center',
           padding: theme.spacing(3),
         },
+        oneRow: {
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: '100%',
+        },
+        a: {
+          lineHeight: 0,
+          zIndex: 200,
+        },
+        logo: {
+          width: '120px',
+          '&:hover': {
+            cursor: 'pointer',
+          },
+        },
         actions: {
           width: '70%',
           display: 'flex',
