@@ -18,6 +18,15 @@ const useStyles = makeStyles((theme) => {
       '& .footer__privacy': {
         paddingTop: theme.spacing(6),
       },
+      '& .accordion-title': {
+        fontFamily: 'Manrope',
+      },
+      '& .pointer-disable': {
+        pointerEvents: 'none',
+      },
+      '& .MuiAccordionSummary-content': {
+        margin: 0,
+      },
     },
   });
 });
@@ -98,7 +107,7 @@ const FooterAccordion = () => {
         return (
           <Accordion square expanded={expanded === index} onChange={handleChange(index)}>
             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" expandIcon={<ExpandMoreIcon />}>
-              <Typography>{item.key.toUpperCase()}</Typography>
+              <Typography className="accordion-title">{item.key.toUpperCase()}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               {item.links.map((x) => {
@@ -109,6 +118,7 @@ const FooterAccordion = () => {
                       href={x.url}
                       target="_blank"
                       rel="noreferrer"
+                      className={x.url !== '' ? 'pointer-enable' : 'pointer-disable'}
                     >
                       {t(`common:${x.key}`)}
                     </a>

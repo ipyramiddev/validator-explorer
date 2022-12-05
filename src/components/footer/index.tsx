@@ -40,6 +40,7 @@ const Footer: React.FC<{ className?: string }> = ({ className }) => {
                         href={x.url}
                         target="_blank"
                         rel="noreferrer"
+                        className={x.url !== '' ? 'pointer-enable' : 'pointer-disable'}
                       >
                         {t(`common:${x.key}`)}
                       </a>
