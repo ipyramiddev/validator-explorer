@@ -24,7 +24,7 @@ export const useStyles = () => {
           },
         },
         logo: {
-          height: '25px',
+          height: '30px',
           margin: 'auto',
           [theme.breakpoints.up('lg')]: {
             margin: 'inherit',
