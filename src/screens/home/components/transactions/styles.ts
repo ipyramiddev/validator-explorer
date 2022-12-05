@@ -22,6 +22,9 @@ export const useStyles = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          '& .label': {
+            fontSize: '18px',
+          },
         },
         seeMoreFooter: {
           paddingTop: theme.spacing(2),

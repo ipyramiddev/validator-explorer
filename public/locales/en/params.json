@@ -1,9 +1,9 @@
 {
-  "params": "Params",
+  "params": "Parameters",
   "staking": "Staking",
   "days": "{{day}} Day(S)",
   "seconds": "{{second}} Second(s)",
-  "bondDenom": "Bond Denom",
+  "bondDenom": "Bond Denomination",
   "unbondingTime": "Unbonding Time",
   "maxEntries": "Max Entries",
   "historicalEntries": "Historical Entries",

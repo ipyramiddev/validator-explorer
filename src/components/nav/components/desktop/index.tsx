@@ -5,10 +5,8 @@ import {
   AppBar,
   ClickAwayListener,
 } from '@material-ui/core';
-import { useRecoilValue } from 'recoil';
-import { readTheme } from '@recoil/settings/selectors';
-import CascadiaLogoDark from '@assets/cascadia-dark.svg';
-import CascadiaLogoLight from '@assets/cascadia-light.svg';
+// import { useRecoilValue } from 'recoil';
+// import { readTheme } from '@recoil/settings/selectors';
 import { useStyles } from './styles';
 import { useDesktop } from './hooks';
 import {
@@ -24,12 +22,12 @@ const Desktop: React.FC<{
   className, title,
 }) => {
   const classes = useStyles();
-  const theme = useRecoilValue(readTheme);
+  // const theme = useRecoilValue(readTheme);
   const {
     isMenu,
-    toggleMenu,
+    // toggleMenu,
     turnOffAll,
-    toggleNetwork,
+    // toggleNetwork,
     isNetwork,
   } = useDesktop();
   return (
@@ -44,7 +42,7 @@ const Desktop: React.FC<{
           })}
         >
           <ActionBar
-            toggleNetwork={toggleNetwork}
+            // toggleNetwork={toggleNetwork}
             isNetwork={isNetwork}
           />
           <TitleBar title={title} />

@@ -8,7 +8,7 @@ import {
   BLOCKS,
   VALIDATORS,
   TRANSACTIONS,
-  PARAMS,
+  PARAMETERS,
 } from '@utils/go_to_page';
 
 export const getMenuItems = () => {
@@ -40,7 +40,7 @@ export const getMenuItems = () => {
     },
     {
       key: 'params',
-      url: PARAMS,
+      url: PARAMETERS,
       icon: <ParamIcon {...iconProps} />,
     },
   ];

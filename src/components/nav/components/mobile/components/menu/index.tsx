@@ -111,7 +111,7 @@ const Menu = (props: MenuProps) => {
             <Typography variant="caption">{t(router.locale)}</Typography>
             <ExpandMoreOutlined fontSize="small" />
           </div> */}
-          <div
+          {/* <div
             className={classes.theme}
             role="button"
             onClick={() => themeOptions.handleChangeTheme(
@@ -122,7 +122,7 @@ const Menu = (props: MenuProps) => {
               <ThemeIcon />
             </span>
             <Typography variant="caption">{t('themeOptions.theme')}</Typography>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

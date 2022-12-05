@@ -10,7 +10,7 @@ export const TRANSACTION_DETAILS = (tx: string): string => `/transactions/${tx}`
 export const PROPOSALS = '/proposals';
 export const PROPOSAL_DETAILS = (id:string | number): string => `/proposals/${id}`;
 export const ACCOUNT_DETAILS = (address: string): string => `/accounts/${address}`;
-export const PARAMS = '/params';
+export const PARAMETERS = '/parameters';
 export const PROFILE_DETAILS = (dtag: string):string => `/${dtag}`;
 
 /**

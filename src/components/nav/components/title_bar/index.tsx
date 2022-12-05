@@ -71,7 +71,8 @@ const TitleBar:React.FC<{
           {
           title
             ? <Typography variant="h1">{title}</Typography>
-            : <img src={logoUrl} className={classes.logo} alt="logo" />
+            : <Typography variant="h1">Validator Explorer</Typography>
+            // : <img src={logoUrl} className={classes.logo} alt="logo" />
           }
         </div>
         {title === 'Validators' && (

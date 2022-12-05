@@ -24,7 +24,7 @@ const BoxDetails: React.FC<{
             {React.isValidElement(title) ? (
               title
             ) : (
-              <Typography variant="h2">
+              <Typography variant="h2" className="title-label">
                 {title}
               </Typography>
             )}

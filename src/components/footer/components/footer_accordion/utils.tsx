@@ -4,7 +4,7 @@ export const footerLink = [
     links: [
       {
         key: 'whitepaper',
-        url: '/#',
+        url: 'https://drive.google.com/file/d/1lnZwSqrwYKe6Pp9wOMxM76gQbfqqFTHH',
       },
       {
         key: 'technology',
@@ -17,7 +17,7 @@ export const footerLink = [
     links: [
       {
         key: 'documentation',
-        url: 'https://drive.google.com/file/d/1xSOGTw_3cD5rTIToxSplDIc4IYfrH64W/view?usp=sharing',
+        url: 'https://drive.google.com/file/d/1f8fSAYkqb1gPhgir505QT6u8H8lD1Exh',
       },
       {
         key: 'github',
@@ -30,11 +30,11 @@ export const footerLink = [
     links: [
       {
         key: 'careers',
-        url: '/#',
+        url: '',
       },
       {
         key: 'contactUs',
-        url: '/#',
+        url: '',
       },
     ],
   },
