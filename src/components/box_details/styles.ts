@@ -8,7 +8,9 @@ export const useStyles = () => {
           overflow: 'hidden',
         },
         header: {
-
+          '& .title-label': {
+            fontSize: '18px',
+          },
         },
         item: {
           padding: theme.spacing(2, 0),
