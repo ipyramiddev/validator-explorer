@@ -37,7 +37,7 @@ const Tokenomics:React.FC<{
     {
       legendKey: 'unbonded',
       percentKey: 'unbondedPercent',
-      value: numeral(state.unbonded.toPrecision(4)).format('0,0'),
+      value: state.unbonded.toPrecision(4),
       rawValue: state.unbonded,
       percent: `${numeral((state.unbonded * 100) / state.total).format('0.00')}%`,
       fill: theme.palette.custom.tokenomics.two,
