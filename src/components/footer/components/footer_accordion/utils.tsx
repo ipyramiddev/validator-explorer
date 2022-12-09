@@ -34,7 +34,7 @@ export const footerLink = [
       },
       {
         key: 'contactUs',
-        url: '',
+        url: 'mailto:contact@cascadia.foundation',
       },
     ],
   },
