@@ -78,6 +78,7 @@ const TitleBar:React.FC<{
         {title === 'Validators' && (
           <div>
             <Button
+              disabled={!address}
               variant="contained"
               color="primary"
               onClick={() => {
