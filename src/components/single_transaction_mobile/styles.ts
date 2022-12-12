@@ -11,6 +11,7 @@ export const useStyles = () => {
         item: {
           marginBottom: theme.spacing(2),
           '& .label': {
+            fontSize: '1.125rem',
             marginBottom: theme.spacing(1),
             color: theme.palette.custom.fonts.fontThree,
           },
